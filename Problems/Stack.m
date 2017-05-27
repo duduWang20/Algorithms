@@ -65,9 +65,19 @@ BOOL possibleMatchedPushPopSequence(NSArray * pushSequence, NSArray * popSequenc
     return matched;
 }
 
-void allPossibleMatchedPopSequence(NSArray * pushSequence, NSArray * popSequence){
+
+void allPossibleMatchedPopSequence(NSUInteger n){
+    
+    NSMutableArray * sequence = [NSMutableArray arrayWithCapacity:n];
+    for (NSUInteger i= 0; i<n; i++) {
+        [sequence insertObject:[NSNumber numberWithUnsignedInteger:i] atIndex:i];
+    }
+    
     
 }
 
+
 @end
+
+
 
