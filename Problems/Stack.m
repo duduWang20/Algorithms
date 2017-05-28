@@ -10,6 +10,10 @@
 
 @implementation Stack
 
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
 BOOL possibleMatchedPushPopSequence(NSArray * pushSequence, NSArray * popSequence){
     
     BOOL matched = YES;
@@ -66,13 +70,42 @@ BOOL possibleMatchedPushPopSequence(NSArray * pushSequence, NSArray * popSequenc
 }
 
 
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
+NSUInteger allPossiblePushPopNumber(NSUInteger unpushed, NSUInteger pushed){
+    NSUInteger count = 0;
+    if (pushed == 0) {
+        if (unpushed>1) {
+            count += allPossiblePushPopNumber(unpushed-1, 1);
+        }else{
+            count += 1;
+        }
+    }else{
+        for (int i=0; i<= pushed ; i++) {
+            if (unpushed > 1) {
+                count += allPossiblePushPopNumber(unpushed-1, i+1);
+            }else{
+                count+=1;
+            }
+            
+        }
+    }
+    return count;
+}
+
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+
 void allPossibleMatchedPopSequence(NSUInteger n){
     
     NSMutableArray * sequence = [NSMutableArray arrayWithCapacity:n];
     for (NSUInteger i= 0; i<n; i++) {
         [sequence insertObject:[NSNumber numberWithUnsignedInteger:i] atIndex:i];
     }
-    
     
 }
 
