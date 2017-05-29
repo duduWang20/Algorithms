@@ -42,7 +42,12 @@ BOOL possibleMatchedPushPopSequence(NSArray * pushSequence, NSArray * popSequenc
 //NSUInteger allPossiblePopOrderNumber(NSUInteger unpushed, NSUInteger pushed);
 //NSUInteger allPossiblePopOrderNumber_NonRecursion(NSUInteger elementNum);
 
-NSUInteger allPossiblePopOrderNumber(NSUInteger elementNum, BOOL recursion);
+unsigned long long allPossiblePopOrderNumber(unsigned char elementNum, BOOL recursion);
+//在非递归情况下，elementNum > 37时， 将产生溢出。
+//在递归算法下，elementNum > 时，将爆栈。
+
+unsigned char biggestUnsignedLongLongForNthPower(unsigned char base);   //base 2  = 63
+
 
 /*
  扩展2：

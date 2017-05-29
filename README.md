@@ -47,3 +47,5 @@ NSUInteger allPossiblePopOrderNumber(NSUInteger elementNum, BOOL recursion);
 为了简化问题，假设输入序列为1到n的整数序列。
 */
 void allPossibleMatchedPopSequence(NSUInteger n);
+
+

@@ -34,65 +34,76 @@
     
     
     
-    NSUInteger count = 1;
-    NSUInteger possible = allPossiblePopOrderNumber(count, YES);
-    NSLog(@"count = %lu, possible = %lu",count, (unsigned long)possible);
+    unsigned char count = 1;
+    unsigned long long possible = allPossiblePopOrderNumber(count, YES);
+    NSLog(@"count = %hhu, possible = %lu",count, (unsigned long)possible);
     
     count = 2;
     possible = allPossiblePopOrderNumber(count, YES);
-    NSLog(@"count = %lu, possible = %lu",count, (unsigned long)possible);
+    NSLog(@"count = %hhu, possible = %lu",count, (unsigned long)possible);
     count = 3;
     possible = allPossiblePopOrderNumber(count, YES);
-    NSLog(@"count = %lu, possible = %lu",count, (unsigned long)possible);
+    NSLog(@"count = %hhu, possible = %lu",count, (unsigned long)possible);
     count = 4;
     possible = allPossiblePopOrderNumber(count, YES);
-    NSLog(@"count = %lu, possible = %lu",count, (unsigned long)possible);
+    NSLog(@"count = %hhu, possible = %lu",count, (unsigned long)possible);
 
 
     count = 5;
     possible = allPossiblePopOrderNumber(count, YES);
-    NSLog(@"count = %lu, possible = %lu",count, (unsigned long)possible);
+    NSLog(@"count = %hhu, possible = %lu",count, (unsigned long)possible);
     count = 6;
     possible = allPossiblePopOrderNumber(count, YES);
-    NSLog(@"count = %lu, possible = %lu",count, (unsigned long)possible);
+    NSLog(@"count = %hhu, possible = %lu",count, (unsigned long)possible);
     count = 7;
     possible = allPossiblePopOrderNumber(count, YES);
-    NSLog(@"count = %lu, possible = %lu",count, (unsigned long)possible);
-    
-    count = 10;
-    possible = allPossiblePopOrderNumber(count, YES);
-    NSLog(@"count = %lu, possible = %lu",count, (unsigned long)possible);
-    
+    NSLog(@"count = %hhu, possible = %lu",count, (unsigned long)possible);
     
     
     count = 1;
     possible = allPossiblePopOrderNumber(count, NO);
-    NSLog(@"count = %lu, possible = %lu",count, (unsigned long)possible);
+    NSLog(@"count = %hhu, possible = %lu",count, (unsigned long)possible);
     count = 2;
     possible = allPossiblePopOrderNumber(count, NO);
-    NSLog(@"count = %lu, possible = %lu",count, (unsigned long)possible);
+    NSLog(@"count = %hhu, possible = %lu",count, (unsigned long)possible);
     count = 3;
     possible = allPossiblePopOrderNumber(count, NO);
-    NSLog(@"count = %lu, possible = %lu",count, (unsigned long)possible);
+    NSLog(@"count = %hhu, possible = %lu",count, (unsigned long)possible);
     count = 4;
     possible = allPossiblePopOrderNumber(count, NO);
-    NSLog(@"count = %lu, possible = %lu",count, (unsigned long)possible);
+    NSLog(@"count = %hhu, possible = %lu",count, (unsigned long)possible);
     
+//    311 6285 4949 0730 1262
+//     81 2944 0421 4973 0764
+//     81 2944 0421 4973 0764
+//
+//    922 3372 0368 5477 5807
+//    long long的最大值：9223372036854775807
+//    long long的最小值：-9223372036854775808
     
-    count = 5;
-    possible = allPossiblePopOrderNumber(count, NO);
-    NSLog(@"count = %lu, possible = %lu",count, (unsigned long)possible);
-    count = 6;
-    possible = allPossiblePopOrderNumber(count, NO);
-    NSLog(@"count = %lu, possible = %lu",count, (unsigned long)possible);
-    count = 7;
-    possible = allPossiblePopOrderNumber(count, NO);
-    NSLog(@"count = %lu, possible = %lu",count, (unsigned long)possible);
+//    840 8510 7643 2482 7156
+//   1195 9798 3858 6045 3492
+
+//    1844 6744 0737 0955 1615
+//    1844 6744 0737 0955 1615
     
-    count = 10;
+    count = 37;
     possible = allPossiblePopOrderNumber(count, NO);
-    NSLog(@"count = %lu, possible = %lu",count, (unsigned long)possible);
+    NSLog(@"count = %hhu, possible = %lu",count, (unsigned long)possible);
     
+//    count = 51;
+//    possible = allPossiblePopOrderNumber(count, NO);
+//    NSLog(@"count = %hhu, possible = %lu",count, (unsigned long)possible);
+//    count = 52;
+//    possible = allPossiblePopOrderNumber(count, NO);
+//    NSLog(@"count = %hhu, possible = %lu",count, (unsigned long)possible);
+//    
+//    count = 54;
+//    possible = allPossiblePopOrderNumber(count, NO);
+//    NSLog(@"count = %hhu, possible = %lu",count, (unsigned long)possible);
+    
+  
+
 }
 
 - (void)didReceiveMemoryWarning {

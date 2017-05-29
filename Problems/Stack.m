@@ -74,7 +74,12 @@ BOOL possibleMatchedPushPopSequence(NSArray * pushSequence, NSArray * popSequenc
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
 
-NSUInteger allPossiblePopOrderNumber(NSUInteger elementNum, BOOL recursion){
+unsigned long long allPossiblePopOrderNumber(unsigned char elementNum, BOOL recursion){
+    if (elementNum>=37) {
+        NSLog(@"最大可输入36个元素的序列");
+        return -1;
+    }
+    
     if (recursion) {
         return allPossiblePopOrderNumber_Recursion(elementNum,0);
     }
@@ -82,8 +87,8 @@ NSUInteger allPossiblePopOrderNumber(NSUInteger elementNum, BOOL recursion){
 }
 
 
-NSUInteger allPossiblePopOrderNumber_Recursion(NSUInteger unpushed, NSUInteger pushed){
-    NSUInteger count = 0;
+unsigned long long allPossiblePopOrderNumber_Recursion(unsigned char unpushed, NSUInteger pushed){
+    unsigned long long count = 0;
     
 //    if (pushed == 0) {
 //        if (unpushed>1) {
@@ -155,11 +160,29 @@ NSUInteger allPossiblePopOrderNumber_Recursion(NSUInteger unpushed, NSUInteger p
 }
 
 
- NSString * keyFor(NSUInteger pushed){
+unsigned char biggestUnsignedLongLongForNthPower(unsigned char base){
+    unsigned long long count = 0;
+    unsigned long long pre = 0;
+    count = base;
+    
+    unsigned char number = 0;
+    
+    while (count > pre) {
+        pre = count;
+        count *= base;
+        number++;
+    }
+    
+    return number;
+    
+}
+
+
+static inline NSString * keyFor(NSUInteger pushed){
     return [NSString stringWithFormat:@"%lu",(unsigned long)pushed];
 }
 
-NSUInteger allPossiblePopOrderNumber_NonRecursion(NSUInteger elementNum){
+unsigned long long allPossiblePopOrderNumber_NonRecursion(unsigned char elementNum){
     
     NSMutableDictionary * currentCeos = [NSMutableDictionary dictionaryWithCapacity:0];
     NSMutableArray * currentKeys = [NSMutableArray arrayWithCapacity:0];
@@ -170,7 +193,7 @@ NSUInteger allPossiblePopOrderNumber_NonRecursion(NSUInteger elementNum){
     NSUInteger unpushed = elementNum;
     NSUInteger pushed = 0; //key
     [nextKeys addObject:keyFor(pushed)];
-    [nextCeos setObject:[NSNumber numberWithUnsignedInteger:1] forKey:keyFor(pushed)];
+    [nextCeos setObject:[NSNumber numberWithUnsignedLongLong:1] forKey:keyFor(pushed)];
    
     
     while (unpushed > 1 || [currentKeys count] > 0) {
@@ -184,7 +207,7 @@ NSUInteger allPossiblePopOrderNumber_NonRecursion(NSUInteger elementNum){
         
         pushed = [[currentKeys objectAtIndex:0] intValue];
         [currentKeys removeObjectAtIndex:0];
-        NSUInteger ceo = [[currentCeos objectForKey:keyFor(pushed)] unsignedIntegerValue];
+        NSUInteger ceo = [[currentCeos objectForKey:keyFor(pushed)] unsignedLongLongValue];
         [currentCeos removeObjectForKey:keyFor(pushed)];
         
         
@@ -197,19 +220,26 @@ NSUInteger allPossiblePopOrderNumber_NonRecursion(NSUInteger elementNum){
             
             NSUInteger nextCeo = 0;
             if ([nextCeos objectForKey:key]) {
-                nextCeo += [[nextCeos objectForKey:key] unsignedIntegerValue];
+                nextCeo += [[nextCeos objectForKey:key] unsignedLongLongValue];
             }
             nextCeo += ceo;
-            [nextCeos setObject:[NSNumber numberWithUnsignedInteger:nextCeo] forKey:key];
+            [nextCeos setObject:[NSNumber numberWithUnsignedLongLong:nextCeo] forKey:key];
         }
         
     }
     
-    NSUInteger count = 0;  //sum of (key+1)* coe
+    unsigned long long count = 0;  //sum of (key+1)* coe
+    unsigned long long pre = 0;
+    NSLog(@"%@", nextCeos);
     for (NSString * key in nextKeys) {
-        NSUInteger value = [[nextCeos objectForKey:key] longLongValue];
+        unsigned long long value = [[nextCeos objectForKey:key] unsignedLongLongValue];
         NSUInteger keyValue = [key longLongValue] + 1;
         count += keyValue * value;
+        if (pre > count) {
+            NSLog(@"-overflow--pre : %lld", pre);
+            NSLog(@"--overflow-count: %lld", count);
+        }
+        pre = count;
     }
 
     return count;
