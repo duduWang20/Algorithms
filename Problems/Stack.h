@@ -28,13 +28,24 @@ BOOL possibleMatchedPushPopSequence(NSArray * pushSequence, NSArray * popSequenc
 
 
 /*
- 题目1扩展：
+ 扩展1：
  输入一个整数序列，表示一个栈的push顺序。求解一共有多少种出栈可能性。
  */
-NSUInteger allPossiblePushPopNumber(NSUInteger unpushed, NSUInteger pushed);
+//2017-05-28 10:49:49.773 Algorithms[21789:1171931] count = 1, possible = 1
+//2017-05-28 10:49:49.774 Algorithms[21789:1171931] count = 2, possible = 2
+//2017-05-28 10:49:49.774 Algorithms[21789:1171931] count = 3, possible = 5
+//2017-05-28 10:49:49.774 Algorithms[21789:1171931] count = 4, possible = 14
+//2017-05-28 10:49:49.774 Algorithms[21789:1171931] count = 5, possible = 42
+//2017-05-28 10:49:49.774 Algorithms[21789:1171931] count = 6, possible = 132
+//2017-05-28 10:49:49.774 Algorithms[21789:1171931] count = 7, possible = 429
+//2017-05-28 10:49:49.775 Algorithms[21789:1171931] count = 10, possible = 16796
+//NSUInteger allPossiblePopOrderNumber(NSUInteger unpushed, NSUInteger pushed);
+//NSUInteger allPossiblePopOrderNumber_NonRecursion(NSUInteger elementNum);
+
+NSUInteger allPossiblePopOrderNumber(NSUInteger elementNum, BOOL recursion);
 
 /*
- 题目2扩展：
+ 扩展2：
  输入一个整数序列，表示一个栈的push顺序，
  输出所有可能的pop序列。
  为了简化问题，假设输入序列为1到n的整数序列。

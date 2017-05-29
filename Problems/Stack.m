@@ -74,27 +74,146 @@ BOOL possibleMatchedPushPopSequence(NSArray * pushSequence, NSArray * popSequenc
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
 
-NSUInteger allPossiblePushPopNumber(NSUInteger unpushed, NSUInteger pushed){
+NSUInteger allPossiblePopOrderNumber(NSUInteger elementNum, BOOL recursion){
+    if (recursion) {
+        return allPossiblePopOrderNumber_Recursion(elementNum,0);
+    }
+    return allPossiblePopOrderNumber_NonRecursion(elementNum);
+}
+
+
+NSUInteger allPossiblePopOrderNumber_Recursion(NSUInteger unpushed, NSUInteger pushed){
     NSUInteger count = 0;
-    if (pushed == 0) {
-        if (unpushed>1) {
-            count += allPossiblePushPopNumber(unpushed-1, 1);
-        }else{
-            count += 1;
-        }
-    }else{
+    
+//    if (pushed == 0) {
+//        if (unpushed>1) {
+//            count += allPossiblePushPopNumber(unpushed-1, 1);
+//        }else{
+//            count += 1;
+//        }
+//    }else{
+//        for (int i=0; i<= pushed ; i++) {
+//            if (unpushed > 1) {
+//                count += allPossiblePushPopNumber(unpushed-1, i+1);
+//            }else{
+//                count+=1;
+//            }
+//            
+//        }
+//    }
+//    等价于
+//    for (int i=0; i<= pushed ; i++) {
+//        if (unpushed > 1) {
+//            count += allPossiblePushPopNumber(unpushed-1, i+1);
+//        }else{
+//            count+=1;
+//        }
+//        
+//    }
+//    等价于
+//    for (int i=0; i<= pushed ; i++) {
+//        if (unpushed == 1) {
+//            count+=1;
+//        }
+//    }
+//    for (int i=0; i<= pushed ; i++) {
+//        if (unpushed > 1) {
+//            count += allPossiblePushPopNumber(unpushed-1, i+1);
+//        }
+//    }
+//    等价于
+//    if (unpushed == 1) {
+//        for (int i=0; i<= pushed ; i++) {
+//            count+=1;
+//        }
+//    }
+//    if (unpushed > 1) {
+//        for (int i=0; i<= pushed ; i++) {
+//            count += allPossiblePushPopNumber(unpushed-1, i+1);
+//        }
+//    }
+//    等价于
+//    if (unpushed == 1) {
+//        return pushed+1;
+//    }
+//    if (unpushed > 1) {
+//        for (int i=0; i<= pushed ; i++) {
+//            count += allPossiblePushPopNumber(unpushed-1, i+1);
+//        }
+//    }
+//    等价于
+    if (unpushed == 1) {
+        count = pushed+1;
+    }
+    if (unpushed > 1) {
         for (int i=0; i<= pushed ; i++) {
-            if (unpushed > 1) {
-                count += allPossiblePushPopNumber(unpushed-1, i+1);
-            }else{
-                count+=1;
-            }
-            
+            count += allPossiblePopOrderNumber_Recursion(unpushed-1, i+1);
         }
     }
+    
     return count;
 }
 
+
+ NSString * keyFor(NSUInteger pushed){
+    return [NSString stringWithFormat:@"%lu",(unsigned long)pushed];
+}
+
+NSUInteger allPossiblePopOrderNumber_NonRecursion(NSUInteger elementNum){
+    
+    NSMutableDictionary * currentCeos = [NSMutableDictionary dictionaryWithCapacity:0];
+    NSMutableArray * currentKeys = [NSMutableArray arrayWithCapacity:0];
+    
+    NSMutableDictionary * nextCeos = [NSMutableDictionary dictionaryWithCapacity:0];
+    NSMutableArray * nextKeys = [NSMutableArray arrayWithCapacity:0];
+    
+    NSUInteger unpushed = elementNum;
+    NSUInteger pushed = 0; //key
+    [nextKeys addObject:keyFor(pushed)];
+    [nextCeos setObject:[NSNumber numberWithUnsignedInteger:1] forKey:keyFor(pushed)];
+   
+    
+    while (unpushed > 1 || [currentKeys count] > 0) {
+        if ([currentKeys count] == 0) {
+            currentKeys = nextKeys;
+            nextKeys = [NSMutableArray arrayWithCapacity:elementNum];
+            currentCeos = nextCeos;
+            nextCeos = [NSMutableDictionary dictionaryWithCapacity:elementNum];
+            unpushed -= 1;
+        }
+        
+        pushed = [[currentKeys objectAtIndex:0] intValue];
+        [currentKeys removeObjectAtIndex:0];
+        NSUInteger ceo = [[currentCeos objectForKey:keyFor(pushed)] unsignedIntegerValue];
+        [currentCeos removeObjectForKey:keyFor(pushed)];
+        
+        
+        for (int i = 1; i<= pushed+1; i++) {
+            
+            NSString * key = keyFor(i);
+            if ([nextKeys count] < i) {
+                [nextKeys insertObject:key atIndex:i-1];
+            }
+            
+            NSUInteger nextCeo = 0;
+            if ([nextCeos objectForKey:key]) {
+                nextCeo += [[nextCeos objectForKey:key] unsignedIntegerValue];
+            }
+            nextCeo += ceo;
+            [nextCeos setObject:[NSNumber numberWithUnsignedInteger:nextCeo] forKey:key];
+        }
+        
+    }
+    
+    NSUInteger count = 0;  //sum of (key+1)* coe
+    for (NSString * key in nextKeys) {
+        NSUInteger value = [[nextCeos objectForKey:key] longLongValue];
+        NSUInteger keyValue = [key longLongValue] + 1;
+        count += keyValue * value;
+    }
+
+    return count;
+}
 
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
