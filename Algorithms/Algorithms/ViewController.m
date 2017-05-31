@@ -7,7 +7,12 @@
 //
 
 #import "ViewController.h"
+
+
 #import "Stack.h"
+#import "CountOfOneInNaturalNumber.h"
+
+
 
 @interface ViewController ()
 
@@ -32,6 +37,8 @@
     [self matchedTest];
     [self sumOfAllPopSequenceTest];
     
+    [self countOfOnes];
+    
 }
 
 -(void) matchedTest{
@@ -45,7 +52,7 @@
     NSArray * push = [NSArray arrayWithObjects:@1, @2, @3, @4, @5, @6, @7, @8,  nil];
     NSArray * pop = [NSArray arrayWithObjects:@3, @2, @1, @5, @4, @8, @6, @7,  nil];
     
-    BOOL matched = possibleMatchedPushPopSequence(push, pop);
+    BOOL matched = isReasonablePopSequenceForPushSequence(push, pop);
     NSLog(@"matched = %d", matched);
 }
 
@@ -94,6 +101,33 @@
 //    11959798385860453492
 //    9057316177202639132
 
+}
+
+-(void) countOfOnes{
+    unsigned long long from = 0;
+    
+    from = 10121041143;
+    NSLog(@"%llu", countOfOneIn(from));
+    
+    from = 1;
+    NSLog(@"%llu", countOfOneIn(from));
+    
+    from = 1113;
+    NSLog(@"%llu", countOfOneIn(from));
+    
+    from = 1;
+    unsigned long long to = 5;
+    NSLog(@"%llu", countOfOneInRange(from, to));
+    
+    from = 1;
+    to = 6;
+    NSLog(@"%llu", countOfOneInRange(from, to));
+    
+    
+    to = 101;
+    NSLog(@"%llu", countOfOneInRange(from, to));
+
+    
 }
 
 @end

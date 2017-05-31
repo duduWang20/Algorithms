@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D5098A8E1EDEF852002644CA /* CountOfOneInNaturalNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = D5098A8D1EDEF852002644CA /* CountOfOneInNaturalNumber.m */; };
 		D55B5D021ED9888200008F53 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D55B5D011ED9888200008F53 /* main.m */; };
 		D55B5D051ED9888200008F53 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D55B5D041ED9888200008F53 /* AppDelegate.m */; };
 		D55B5D081ED9888200008F53 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D55B5D071ED9888200008F53 /* ViewController.m */; };
@@ -29,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D5098A8C1EDEF852002644CA /* CountOfOneInNaturalNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountOfOneInNaturalNumber.h; sourceTree = "<group>"; };
+		D5098A8D1EDEF852002644CA /* CountOfOneInNaturalNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountOfOneInNaturalNumber.m; sourceTree = "<group>"; };
 		D55B5CFC1ED9888100008F53 /* Algorithms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algorithms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D55B5D001ED9888100008F53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D55B5D011ED9888200008F53 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -129,6 +132,8 @@
 		D55B5D281ED9CC4500008F53 /* Problems */ = {
 			isa = PBXGroup;
 			children = (
+				D5098A8C1EDEF852002644CA /* CountOfOneInNaturalNumber.h */,
+				D5098A8D1EDEF852002644CA /* CountOfOneInNaturalNumber.m */,
 				D55B5D291ED9CC4500008F53 /* Stack.h */,
 				D55B5D2A1ED9CC4500008F53 /* Stack.m */,
 			);
@@ -241,6 +246,7 @@
 				D55B5D2D1ED9CC5E00008F53 /* README.md in Sources */,
 				D55B5D051ED9888200008F53 /* AppDelegate.m in Sources */,
 				D55B5D021ED9888200008F53 /* main.m in Sources */,
+				D5098A8E1EDEF852002644CA /* CountOfOneInNaturalNumber.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
