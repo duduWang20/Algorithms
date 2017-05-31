@@ -50,18 +50,50 @@
 }
 
 -(void) sumOfAllPopSequenceTest{
-    unsigned char count = 0;
+    unsigned char unpushed = 0;
+    unsigned char pushed = 0;
     unsigned long long possible = 0;
     
-    NSLog(@"===================");
-    //    30 =  5 5534 0648 7704 8198   17
-    //    35 =  311 6285 4949 0730 1262  19
-    //    36  = 1195 9798 3858 6045 3492  20
-    count = 30;//36溢出
-//    possible = allPossiblePopOrderNumber_Obsolete(count, NO);
-//    NSLog(@"element num = %hhu, possible = %lu",count, (unsigned long)possible);
-
+    unpushed = 1;
+    pushed = 0;
+    possible = countOfAllPossiblePopSequences(unpushed, pushed);
+    NSLog(@"element unpushed = %hhu, pushed = %hhu, possible = %lu",unpushed,pushed, (unsigned long)possible);
     
+    unpushed = 2;
+    pushed = 0;
+    possible = countOfAllPossiblePopSequences(unpushed, pushed);
+    NSLog(@"element unpushed = %hhu, pushed = %hhu, possible = %lu",unpushed,pushed, (unsigned long)possible);
+    
+    unpushed = 12;
+     pushed = 4;
+    possible = countOfAllPossiblePopSequences(unpushed, pushed);
+    NSLog(@"element unpushed = %hhu, pushed = %hhu, possible = %lu",unpushed,pushed, (unsigned long)possible);
+    
+    unpushed = 13;
+     pushed = 3;
+    possible = countOfAllPossiblePopSequences(unpushed, pushed);
+    NSLog(@"element unpushed = %hhu, pushed = %hhu, possible = %lu",unpushed,pushed, (unsigned long)possible);
+
+    unpushed = 35;
+    pushed = 0;
+    possible = countOfAllPossiblePopSequences(unpushed, pushed);
+    NSLog(@"element unpushed = %hhu, pushed = %hhu, possible = %lu",unpushed,pushed, (unsigned long)possible);
+    
+    unpushed = 36;
+    pushed = 0;
+    possible = countOfAllPossiblePopSequences(unpushed, pushed);
+    NSLog(@"element unpushed = %hhu, pushed = %hhu, possible = %lu",unpushed,pushed, (unsigned long)possible);
+    
+    unpushed = 37;
+    pushed = 0;
+    possible = countOfAllPossiblePopSequences(unpushed, pushed);
+    NSLog(@"element unpushed = %hhu, pushed = %hhu, possible = %lu",unpushed,pushed, (unsigned long)possible);
+    
+    
+//    3116285494907301262
+//    11959798385860453492
+//    9057316177202639132
+
 }
 
 @end

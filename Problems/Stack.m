@@ -84,7 +84,7 @@ BOOL possibleMatchedPushPopSequence(NSArray * pushSequence, NSArray * popSequenc
  */
 
 
-unsigned long long allPossiblePopOrderNumber_Recursion_Obsolete3(unsigned char unpushed, unsigned char pushed){
+unsigned long long allPossiblePopOrderNumber_Recursion_Obsolete3(unsigned int unpushed, unsigned int pushed){
     unsigned long long count = 0;
     
 //    if (pushed == 0) {
@@ -225,10 +225,10 @@ unsigned long long allPossiblePopOrderNumber_NonRecursion_Obsolete2(unsigned int
 
 
 
-static inline NSString * keyFor(NSUInteger pushed){
+static inline NSString * keyFor(unsigned long pushed){
     return [NSString stringWithFormat:@"%lu",(unsigned long)pushed];
 }
-unsigned long long allPossiblePopOrderNumber_NonRecursion_Obsolete1(unsigned char elementNum){
+unsigned long long allPossiblePopOrderNumber_NonRecursion_Obsolete1(unsigned int elementNum){
     
     
     NSMutableDictionary * currentCeos = [NSMutableDictionary dictionaryWithCapacity:0];
@@ -237,8 +237,8 @@ unsigned long long allPossiblePopOrderNumber_NonRecursion_Obsolete1(unsigned cha
     NSMutableDictionary * nextCeos = [NSMutableDictionary dictionaryWithCapacity:0];
     NSMutableArray * nextKeys = [NSMutableArray arrayWithCapacity:0];
     
-    NSUInteger unpushed = elementNum;
-    NSUInteger pushed = 0; //key
+    unsigned int unpushed = elementNum;
+    unsigned int pushed = 0; //key
     [nextKeys addObject:keyFor(pushed)];
     [nextCeos setObject:[NSNumber numberWithUnsignedLongLong:1] forKey:keyFor(pushed)];
     
@@ -292,25 +292,20 @@ unsigned long long allPossiblePopOrderNumber_NonRecursion_Obsolete1(unsigned cha
     return count;
 }
 
-unsigned long long allPossiblePopOrderNumber_Catanat(unsigned char n){
+unsigned long long countOfAllPossiblePopSequencesByCatanat(unsigned int n){
     
-//    printSysTime();
     unsigned long long count = 1;
     int innerN = n;
     
-//    for (int innerN = 3; innerN <= n; innerN++) {
-        count = 1;
-        unsigned int dn = 2* innerN;
-        
-        for (int i = 0; i < innerN; ++i){
-            count *= ( dn - i);
-            count /= (i + 1);
-        }
-        count = count / (innerN+1);
-       
-//    }
-// printSysTime();
-   
+    count = 1;
+    unsigned int dn = 2* innerN;
+    
+    for (int i = 0; i < innerN; ++i){
+        count *= ( dn - i);
+        count /= (i + 1);
+    }
+    count = count / (innerN+1);
+    
     return count;
 }
 
@@ -322,7 +317,7 @@ unsigned long long allPossiblePopOrderNumber_Catanat(unsigned char n){
  输出所有可能的n+m个元素的pop序列。
  为了简化问题，假设pop序列为1到n+m的整数序列。
  */
-unsigned long long allPossiblePopSequencesNumber(unsigned char unpushed, unsigned char pushed){
+unsigned long long countOfAllPossiblePopSequences(unsigned int unpushed, unsigned int pushed){
     
     if (unpushed == 0) {
         return 1;
@@ -331,7 +326,7 @@ unsigned long long allPossiblePopSequencesNumber(unsigned char unpushed, unsigne
         return pushed + 1;
     }
     
-    unsigned char elementNum = unpushed + pushed;
+    unsigned int elementNum = unpushed + pushed;
     unsigned int size = elementNum * sizeof(unsigned long long);
     unsigned long long  * currentCeosU = malloc(size);
     unsigned long long * nextCeosU = malloc(size);
@@ -359,9 +354,6 @@ unsigned long long allPossiblePopSequencesNumber(unsigned char unpushed, unsigne
             index = 1;
             unpushed -= 1;
             nextNum++;
-            
-            NSLog(@"---");
-            printSysTime();
         }else{
             index++;
         }
@@ -379,6 +371,9 @@ unsigned long long allPossiblePopSequencesNumber(unsigned char unpushed, unsigne
     for (unsigned int i = 1; i < elementNum; i++) {
         unsigned long long value = nextCeosU[i];
         count += (i+1) * value;
+        if (pre > count) {
+            NSLog(@"over flow");
+        }
         pre = count;
     }
     
@@ -387,11 +382,7 @@ unsigned long long allPossiblePopSequencesNumber(unsigned char unpushed, unsigne
     nextCeosU = nil;
     currentCeosU = nil;
     
-    printSysTime();
-    
-    
     return count;
-    return 0;
 }
 
 
@@ -399,7 +390,7 @@ unsigned long long allPossiblePopSequencesNumber(unsigned char unpushed, unsigne
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
 
-void allPossibleMatchedPopSequence(NSUInteger n){
+void generatingAllPossiblePopSequences(unsigned int  n){
     
     NSMutableArray * sequence = [NSMutableArray arrayWithCapacity:n];
     for (NSUInteger i= 1; i <= n; i++) {  //入栈序列   1 2 ... n

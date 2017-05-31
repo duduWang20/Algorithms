@@ -29,7 +29,6 @@
 BOOL possibleMatchedPushPopSequence(NSArray * pushSequence, NSArray * popSequence);
 
 
-
 //2017-05-28 10:49:49.773 Algorithms[21789:1171931] count = 1, possible = 1
 //2017-05-28 10:49:49.774 Algorithms[21789:1171931] count = 2, possible = 2
 //2017-05-28 10:49:49.774 Algorithms[21789:1171931] count = 3, possible = 5
@@ -48,22 +47,24 @@ BOOL possibleMatchedPushPopSequence(NSArray * pushSequence, NSArray * popSequenc
  输出所有可能的n个元素的pop序列数量。
  为了简化问题，假设pop序列为1到n+m的整数序列。
  */
-// max unpushed + pushed = 35
+// max unpushed + pushed = 36
 // max elementNum = 35
-unsigned long long allPossiblePopOrderNumber_Recursion_Obsolete3(unsigned char unpushed, unsigned char pushed) StackDeprecated_Num;
+unsigned long long allPossiblePopOrderNumber_Recursion_Obsolete3(unsigned int unpushed, unsigned int pushed) StackDeprecated_Num;
 unsigned long long allPossiblePopOrderNumber_NonRecursion_Obsolete2(unsigned int elementNum) StackDeprecated_Num;
-unsigned long long allPossiblePopOrderNumber_NonRecursion_Obsolete1(unsigned char elementNum)  StackDeprecated_Num;
+unsigned long long allPossiblePopOrderNumber_NonRecursion_Obsolete1(unsigned int elementNum)  StackDeprecated_Num;
 
 
-unsigned long long allPossiblePopOrderNumber_Catanat(unsigned char n);  //使用卡特兰 计算公式  max n = 30
+unsigned long long countOfAllPossiblePopSequencesByCatanat(unsigned int n);  //使用卡特兰 计算公式  max n = 30
 
 /*
  扩展2.2：
  对于n个入栈序列，一个push顺序，且当前栈中有m个入栈元素
  输出所有可能的n+m个元素的pop序列。
  为了简化问题，假设pop序列为1到n+m的整数序列。
+ 
+ It's a good distributed algorithm for computing catalan number
  */
-unsigned long long allPossiblePopSequencesNumber(unsigned char unpushed, unsigned char pushed);// max unpushed + pushed = 35
+unsigned long long countOfAllPossiblePopSequences(unsigned int unpushed, unsigned int pushed);// max unpushed + pushed = 36
 
 
 /*
@@ -72,7 +73,7 @@ unsigned long long allPossiblePopSequencesNumber(unsigned char unpushed, unsigne
  输出所有可能的pop序列。
  为了简化问题，假设输入序列为1到n的整数序列。
  */
-void allPossibleMatchedPopSequence(NSUInteger n);  //未完成
+void generatingAllPossiblePopSequences(unsigned int  n);  //未完成
 
 
 //////////////////////////////////////////////////////
