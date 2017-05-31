@@ -8,6 +8,8 @@
 
 #import "Stack.h"
 
+#include <sys/time.h>
+
 @implementation Stack
 
 
@@ -74,20 +76,15 @@ BOOL possibleMatchedPushPopSequence(NSArray * pushSequence, NSArray * popSequenc
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
 
-unsigned long long allPossiblePopOrderNumber(unsigned char elementNum, BOOL recursion){
-    if (elementNum>=37) {
-        NSLog(@"最大可输入36个元素的序列");
-        return -1;
-    }
-    
-    if (recursion) {
-        return allPossiblePopOrderNumber_Recursion(elementNum,0);
-    }
-    return allPossiblePopOrderNumber_NonRecursion(elementNum);
-}
+/*
+ 扩展2.1：
+ 对于n个入栈序列，一个push顺序，且当前栈中有0个入栈元素
+ 输出所有可能的n个元素的pop序列数量。
+ 为了简化问题，假设pop序列为1到n+m的整数序列。
+ */
 
 
-unsigned long long allPossiblePopOrderNumber_Recursion(unsigned char unpushed, NSUInteger pushed){
+unsigned long long allPossiblePopOrderNumber_Recursion_Obsolete3(unsigned char unpushed, unsigned char pushed){
     unsigned long long count = 0;
     
 //    if (pushed == 0) {
@@ -152,7 +149,7 @@ unsigned long long allPossiblePopOrderNumber_Recursion(unsigned char unpushed, N
     }
     if (unpushed > 1) {
         for (int i=0; i<= pushed ; i++) {
-            count += allPossiblePopOrderNumber_Recursion(unpushed-1, i+1);
+            count += allPossiblePopOrderNumber_Recursion_Obsolete3(unpushed-1, i+1);
         }
     }
     
@@ -160,29 +157,79 @@ unsigned long long allPossiblePopOrderNumber_Recursion(unsigned char unpushed, N
 }
 
 
-unsigned char biggestUnsignedLongLongForNthPower(unsigned char base){
-    unsigned long long count = 0;
+
+unsigned long long allPossiblePopOrderNumber_NonRecursion_Obsolete2(unsigned int elementNum){
+   
+    if (elementNum == 1) {
+        return 1;
+    }
+    if (elementNum == 2) {
+        return 2;
+    }
+    unsigned int size = elementNum * sizeof(unsigned long long);
+    unsigned long long  * currentCeosU = malloc(size);
+    unsigned long long * nextCeosU = malloc(size);
+    memset(currentCeosU, 0, size);
+    memset(nextCeosU, 0, size);
+    
+    
+    NSUInteger unpushed = elementNum-1;
+    unsigned int currentNum = 0;
+    
+    unsigned int nextNum = 1;
+    unsigned int index = 0;
+    nextCeosU[1] = 1;
+    
+    while (unpushed > 1 || currentNum > 0) {
+        
+        if (currentNum == 0) {
+            memcpy(currentCeosU, nextCeosU, size);
+            memset(nextCeosU, 0, size);
+            currentNum = nextNum;
+            index = 1;
+            unpushed -= 1;
+            nextNum++;
+            
+            NSLog(@"---");
+            printSysTime();
+        }else{
+            index++;
+        }
+        
+        for (int i = 1; i<= index+1; i++) {
+            nextCeosU[i] = nextCeosU[i] + currentCeosU[index];;
+        }
+        
+        currentNum--;
+    }
+
+    unsigned long long count = 0;  //sum of (key+1)* coe
     unsigned long long pre = 0;
-    count = base;
-    
-    unsigned char number = 0;
-    
-    while (count > pre) {
+    for (unsigned int i = 1; i < elementNum; i++) {
+        unsigned long long value = nextCeosU[i];
+        count += (i+1) * value;
         pre = count;
-        count *= base;
-        number++;
     }
     
-    return number;
+    free(currentCeosU);
+    free(nextCeosU);
+    nextCeosU = nil;
+    currentCeosU = nil;
     
+    printSysTime();
+
+    
+    return count;
 }
+
+
 
 
 static inline NSString * keyFor(NSUInteger pushed){
     return [NSString stringWithFormat:@"%lu",(unsigned long)pushed];
 }
-
-unsigned long long allPossiblePopOrderNumber_NonRecursion(unsigned char elementNum){
+unsigned long long allPossiblePopOrderNumber_NonRecursion_Obsolete1(unsigned char elementNum){
+    
     
     NSMutableDictionary * currentCeos = [NSMutableDictionary dictionaryWithCapacity:0];
     NSMutableArray * currentKeys = [NSMutableArray arrayWithCapacity:0];
@@ -194,7 +241,7 @@ unsigned long long allPossiblePopOrderNumber_NonRecursion(unsigned char elementN
     NSUInteger pushed = 0; //key
     [nextKeys addObject:keyFor(pushed)];
     [nextCeos setObject:[NSNumber numberWithUnsignedLongLong:1] forKey:keyFor(pushed)];
-   
+    
     
     while (unpushed > 1 || [currentKeys count] > 0) {
         if ([currentKeys count] == 0) {
@@ -241,9 +288,112 @@ unsigned long long allPossiblePopOrderNumber_NonRecursion(unsigned char elementN
         }
         pre = count;
     }
-
+    
     return count;
 }
+
+unsigned long long allPossiblePopOrderNumber_Catanat(unsigned char n){
+    
+//    printSysTime();
+    unsigned long long count = 1;
+    int innerN = n;
+    
+//    for (int innerN = 3; innerN <= n; innerN++) {
+        count = 1;
+        unsigned int dn = 2* innerN;
+        
+        for (int i = 0; i < innerN; ++i){
+            count *= ( dn - i);
+            count /= (i + 1);
+        }
+        count = count / (innerN+1);
+       
+//    }
+// printSysTime();
+   
+    return count;
+}
+
+
+
+/*
+ 扩展2.2：
+ 对于n个入栈序列，一个push顺序，且当前栈中有m个入栈元素
+ 输出所有可能的n+m个元素的pop序列。
+ 为了简化问题，假设pop序列为1到n+m的整数序列。
+ */
+unsigned long long allPossiblePopSequencesNumber(unsigned char unpushed, unsigned char pushed){
+    
+    if (unpushed == 0) {
+        return 1;
+    }
+    if (unpushed == 1) {
+        return pushed + 1;
+    }
+    
+    unsigned char elementNum = unpushed + pushed;
+    unsigned int size = elementNum * sizeof(unsigned long long);
+    unsigned long long  * currentCeosU = malloc(size);
+    unsigned long long * nextCeosU = malloc(size);
+    memset(currentCeosU, 0, size);
+    memset(nextCeosU, 0, size);
+    
+    unsigned int currentNum = 0;
+    unsigned int nextNum = pushed+1;
+    unsigned int index = 0;
+    
+    nextCeosU[1] = 1;
+    unpushed -= 1;
+    
+    for (int i = 1; i<= pushed+1; i++) {
+        nextCeosU[i] = 1;;
+    }
+    
+    while (unpushed > 1 || currentNum > 0) {
+        
+        if (currentNum == 0) {
+            memcpy(currentCeosU, nextCeosU, size);
+            memset(nextCeosU, 0, size);
+            currentNum = nextNum;
+            
+            index = 1;
+            unpushed -= 1;
+            nextNum++;
+            
+            NSLog(@"---");
+            printSysTime();
+        }else{
+            index++;
+        }
+        
+        for (int i = 1; i<= index+1; i++) {
+            unsigned long long vlaue = nextCeosU[i] + currentCeosU[index];
+            nextCeosU[i] = vlaue;
+        }
+        
+        currentNum--;
+    }
+    
+    unsigned long long count = 0;  //sum of (key+1)* coe
+    unsigned long long pre = 0;
+    for (unsigned int i = 1; i < elementNum; i++) {
+        unsigned long long value = nextCeosU[i];
+        count += (i+1) * value;
+        pre = count;
+    }
+    
+    free(currentCeosU);
+    free(nextCeosU);
+    nextCeosU = nil;
+    currentCeosU = nil;
+    
+    printSysTime();
+    
+    
+    return count;
+    return 0;
+}
+
 
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
@@ -252,12 +402,35 @@ unsigned long long allPossiblePopOrderNumber_NonRecursion(unsigned char elementN
 void allPossibleMatchedPopSequence(NSUInteger n){
     
     NSMutableArray * sequence = [NSMutableArray arrayWithCapacity:n];
-    for (NSUInteger i= 0; i<n; i++) {
+    for (NSUInteger i= 1; i <= n; i++) {  //入栈序列   1 2 ... n
         [sequence insertObject:[NSNumber numberWithUnsignedInteger:i] atIndex:i];
     }
     
+    
 }
 
+
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+void printSysTime(){
+    struct timeval t_val;  //tv_usec 微妙
+    gettimeofday(&t_val, NULL);
+    printf("time sec=%ld m_sec=%d \n", t_val.tv_sec, t_val.tv_usec);
+}
+
+unsigned char biggestUnsignedLongLongForNthPower(unsigned char base){
+    unsigned long long count = 0;
+    unsigned long long pre = 0;
+    count = base;
+    unsigned char number = 0;
+    while (count > pre) {
+        pre = count;
+        count *= base;
+        number++;
+    }
+    return number;
+}
 
 @end
 
