@@ -14,7 +14,6 @@
 @interface Stack : NSObject
 
 
-
 /*
  题目1： 输入两个整数序列。其中一个序列表示栈的push顺序，
  判断另一个序列有没有可能是对应的pop顺序。
@@ -26,7 +25,7 @@
  但序列4、3、5、1、2就不可能是push序列1、2、3、4、5的pop序列。
  */
 
-BOOL possibleMatchedPushPopSequence(NSArray * pushSequence, NSArray * popSequence);
+BOOL isReasonablePopSequenceForPushSequence(NSArray * pushSequence, NSArray * popSequence);
 
 
 //2017-05-28 10:49:49.773 Algorithms[21789:1171931] count = 1, possible = 1
@@ -65,6 +64,8 @@ unsigned long long countOfAllPossiblePopSequencesByCatanat(unsigned int n);  //�
  It's a good distributed algorithm for computing catalan number
  */
 unsigned long long countOfAllPossiblePopSequences(unsigned int unpushed, unsigned int pushed);// max unpushed + pushed = 36
+
+// f(n-1,k+1)<f(n,k)<f(n+1,k-1)
 
 
 /*

@@ -16,7 +16,7 @@
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
-BOOL possibleMatchedPushPopSequence(NSArray * pushSequence, NSArray * popSequence){
+BOOL isReasonablePopSequenceForPushSequence(NSArray * pushSequence, NSArray * popSequence){
     
     BOOL matched = YES;
     int indexPush = 0;
@@ -328,6 +328,7 @@ unsigned long long countOfAllPossiblePopSequences(unsigned int unpushed, unsigne
     
     unsigned int elementNum = unpushed + pushed;
     unsigned int size = elementNum * sizeof(unsigned long long);
+    
     unsigned long long  * currentCeosU = malloc(size);
     unsigned long long * nextCeosU = malloc(size);
     memset(currentCeosU, 0, size);
