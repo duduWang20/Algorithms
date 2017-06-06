@@ -1,4 +1,4 @@
-//
+
 //  Stack.h
 //  Algorithms
 //
@@ -11,7 +11,7 @@
 #define StackDeprecated_Num __attribute__((deprecated("use allPossiblePopOrderNumber_Catanat or allPossiblePopSequences")))
 
 
-@interface Stack : NSObject
+@interface AlgStack : NSObject
 
 
 /*

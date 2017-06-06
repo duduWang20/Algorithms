@@ -1,16 +1,14 @@
 //
-//  CountOfOneInNaturalNumber.m
+//  AlgCount.m
 //  Algorithms
 //
-//  Created by wangjufan on 17-5-31.
+//  Created by wangjufan on 17-6-5.
 //  Copyright (c) 2017年 dudu. All rights reserved.
 //
 
-#import "CountOfOneInNaturalNumber.h"
+#import "AlgCount.h"
 
-@implementation CountOfOneInNaturalNumber
-
-
+@implementation AlgCount
 
 unsigned long long  countOfOneIn(unsigned long long naturalNumber){
     int count = 0;
@@ -49,4 +47,3 @@ unsigned long long  countOfOneInRange(unsigned long long from, unsigned long lon
 }
 
 @end
-

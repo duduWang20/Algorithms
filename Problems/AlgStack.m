@@ -1,16 +1,16 @@
 //
-//  Stack.m
+//  AlgStack.m
 //  Algorithms
 //
-//  Created by wangjufan on 17-5-27.
+//  Created by wangjufan on 17-6-5.
 //  Copyright (c) 2017年 dudu. All rights reserved.
 //
 
-#import "Stack.h"
+#import "AlgStack.h"
 
 #include <sys/time.h>
 
-@implementation Stack
+@implementation AlgStack
 
 
 //////////////////////////////////////////////////////////////////
@@ -87,63 +87,63 @@ BOOL isReasonablePopSequenceForPushSequence(NSArray * pushSequence, NSArray * po
 unsigned long long allPossiblePopOrderNumber_Recursion_Obsolete3(unsigned int unpushed, unsigned int pushed){
     unsigned long long count = 0;
     
-//    if (pushed == 0) {
-//        if (unpushed>1) {
-//            count += allPossiblePushPopNumber(unpushed-1, 1);
-//        }else{
-//            count += 1;
-//        }
-//    }else{
-//        for (int i=0; i<= pushed ; i++) {
-//            if (unpushed > 1) {
-//                count += allPossiblePushPopNumber(unpushed-1, i+1);
-//            }else{
-//                count+=1;
-//            }
-//            
-//        }
-//    }
-//    等价于
-//    for (int i=0; i<= pushed ; i++) {
-//        if (unpushed > 1) {
-//            count += allPossiblePushPopNumber(unpushed-1, i+1);
-//        }else{
-//            count+=1;
-//        }
-//        
-//    }
-//    等价于
-//    for (int i=0; i<= pushed ; i++) {
-//        if (unpushed == 1) {
-//            count+=1;
-//        }
-//    }
-//    for (int i=0; i<= pushed ; i++) {
-//        if (unpushed > 1) {
-//            count += allPossiblePushPopNumber(unpushed-1, i+1);
-//        }
-//    }
-//    等价于
-//    if (unpushed == 1) {
-//        for (int i=0; i<= pushed ; i++) {
-//            count+=1;
-//        }
-//    }
-//    if (unpushed > 1) {
-//        for (int i=0; i<= pushed ; i++) {
-//            count += allPossiblePushPopNumber(unpushed-1, i+1);
-//        }
-//    }
-//    等价于
-//    if (unpushed == 1) {
-//        return pushed+1;
-//    }
-//    if (unpushed > 1) {
-//        for (int i=0; i<= pushed ; i++) {
-//            count += allPossiblePushPopNumber(unpushed-1, i+1);
-//        }
-//    }
-//    等价于
+    //    if (pushed == 0) {
+    //        if (unpushed>1) {
+    //            count += allPossiblePushPopNumber(unpushed-1, 1);
+    //        }else{
+    //            count += 1;
+    //        }
+    //    }else{
+    //        for (int i=0; i<= pushed ; i++) {
+    //            if (unpushed > 1) {
+    //                count += allPossiblePushPopNumber(unpushed-1, i+1);
+    //            }else{
+    //                count+=1;
+    //            }
+    //
+    //        }
+    //    }
+    //    等价于
+    //    for (int i=0; i<= pushed ; i++) {
+    //        if (unpushed > 1) {
+    //            count += allPossiblePushPopNumber(unpushed-1, i+1);
+    //        }else{
+    //            count+=1;
+    //        }
+    //
+    //    }
+    //    等价于
+    //    for (int i=0; i<= pushed ; i++) {
+    //        if (unpushed == 1) {
+    //            count+=1;
+    //        }
+    //    }
+    //    for (int i=0; i<= pushed ; i++) {
+    //        if (unpushed > 1) {
+    //            count += allPossiblePushPopNumber(unpushed-1, i+1);
+    //        }
+    //    }
+    //    等价于
+    //    if (unpushed == 1) {
+    //        for (int i=0; i<= pushed ; i++) {
+    //            count+=1;
+    //        }
+    //    }
+    //    if (unpushed > 1) {
+    //        for (int i=0; i<= pushed ; i++) {
+    //            count += allPossiblePushPopNumber(unpushed-1, i+1);
+    //        }
+    //    }
+    //    等价于
+    //    if (unpushed == 1) {
+    //        return pushed+1;
+    //    }
+    //    if (unpushed > 1) {
+    //        for (int i=0; i<= pushed ; i++) {
+    //            count += allPossiblePushPopNumber(unpushed-1, i+1);
+    //        }
+    //    }
+    //    等价于
     if (unpushed == 1) {
         count = pushed+1;
     }
@@ -159,7 +159,7 @@ unsigned long long allPossiblePopOrderNumber_Recursion_Obsolete3(unsigned int un
 
 
 unsigned long long allPossiblePopOrderNumber_NonRecursion_Obsolete2(unsigned int elementNum){
-   
+    
     if (elementNum == 1) {
         return 1;
     }
@@ -202,7 +202,7 @@ unsigned long long allPossiblePopOrderNumber_NonRecursion_Obsolete2(unsigned int
         
         currentNum--;
     }
-
+    
     unsigned long long count = 0;  //sum of (key+1)* coe
     unsigned long long pre = 0;
     for (unsigned int i = 1; i < elementNum; i++) {
@@ -217,7 +217,7 @@ unsigned long long allPossiblePopOrderNumber_NonRecursion_Obsolete2(unsigned int
     currentCeosU = nil;
     
     printSysTime();
-
+    
     
     return count;
 }
@@ -393,14 +393,75 @@ unsigned long long countOfAllPossiblePopSequences(unsigned int unpushed, unsigne
 
 void generatingAllPossiblePopSequences(unsigned int  n){
     
-    NSMutableArray * sequence = [NSMutableArray arrayWithCapacity:n];
-    for (NSUInteger i= 1; i <= n; i++) {  //入栈序列   1 2 ... n
-        [sequence insertObject:[NSNumber numberWithUnsignedInteger:i] atIndex:i];
+    long long elements[n];
+    for (int i= 0; i < n; i++) {
+        elements[i] = i;
+    }
+    
+    long long stack[n];
+    long long stackIndex = 0;
+    for (int i= 0; i < n; i++) {
+        stack[i] = -1;
+    }
+    
+    int elementsIndex = 0;
+
+    recursionGenerate(elements, elementsIndex, stack ,stackIndex, n);
+
+}
+
+void recursionGenerate(long long elements[],
+                       int elementIndex,
+                       long long stack[],
+                       long long stackIndex,
+                       unsigned int n){
+  
+    if (elementIndex < n && elementIndex >= 0) {
+        stackPush(elements, elementIndex, stack, stackIndex);
+        recursionGenerate(elements, elementIndex+1, stack ,stackIndex+1, n);
+        
     }
     
     
+    if (stackIndex < n && stackIndex >= 0) {
+        
+        stackPop(elements, elementIndex, stack, stackIndex);
+        recursionGenerate(elements, elementIndex+1, stack ,stackIndex+1, n);
+    }
 }
 
+
+static inline void stackPush(long long elements[],
+                                int elementIndex,
+                                long long stack[],
+                                long long stackInex){
+    stack[stackInex] = elements[elementIndex];
+}
+static inline void stackPop(long long elements[],
+                               int elementIndex,
+                               long long stack[],
+                               long long stackInex){
+    printf("%lld", stack[stackInex]);
+    stack[stackInex] = -1;
+}
+
+static inline void generatePush(long long elements[],
+                                int *elementIndex,
+                                long long stack[],
+                                long long *stackInex){
+    stack[*stackInex] = elements[*elementIndex];
+    (*stackInex)++;
+    (*elementIndex)++;
+}
+static inline void generatePop(long long elements[],
+                               int *elementIndex,
+                               long long stack[],
+                               long long *stackInex){
+    (*stackInex)--;
+//    (*elementIndex)--;
+    printf("%lld", stack[*stackInex]);
+    stack[*stackInex] = -1;
+}
 
 //////////////////////////////////////////////////////
 //////////////////////////////////////////////////////

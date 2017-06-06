@@ -9,10 +9,12 @@
 #import "ViewController.h"
 
 
-#import "Stack.h"
-#import "CountOfOneInNaturalNumber.h"
+#import "AlgStack.h"
+#import "AlgCount.h"
 
+#import "AlgPath.h"
 
+#import "AlgString.h"
 
 @interface ViewController ()
 
@@ -34,10 +36,14 @@
 
 -(void)test{
     
-    [self matchedTest];
-    [self sumOfAllPopSequenceTest];
+    generatingAllPossiblePopSequences(5);
     
-    [self countOfOnes];
+//    [self matchedTest];
+//    [self sumOfAllPopSequenceTest];
+//    
+//    [self countOfOnes];
+//    
+//    [self callPath];
     
 }
 
@@ -126,9 +132,37 @@
     
     to = 101;
     NSLog(@"%llu", countOfOneInRange(from, to));
+    
+
+}
+
+
+-(void)callPath{
+    
+    long long a[] = {100   ,99,    98, 1,   2  ,3,      4,5,     40, 1,  2  ,3};
+    long long b[] = {1,2,    3,4, 5,40, 4,5 ,40,4, 5,40};
+    
+    
+//    exchangingForMinDifferenceInSum(a, b, 12);
+    exchangingForMinDifferenceInSumPrintAll(a, b, 12);
+    
+    
+//    NSString * src = @"xcccxcccc4vc75fg4781c xcv  xvccv x22cv xcvxxv374183iul41m875137t41cg9fvgoix37fgj418cfxc748fpxcv1734812734";
+//    NSString * des = @"ccvx";
+//    
+//    harmonyMatch([src UTF8String], [des UTF8String]);
+//    
+//    harmonyMatchInSourceRepeatable([src UTF8String], [des UTF8String]);
+//    
+//    
+//    des = @"ccvx";
+//    harmonyMatchInSourceRepeatable([src UTF8String], [des UTF8String]);
 
     
+    
 }
+
+
 
 @end
 
