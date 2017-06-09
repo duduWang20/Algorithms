@@ -16,6 +16,8 @@
 
 #import "AlgString.h"
 
+#import "AlgMatrix.h"
+
 @interface ViewController ()
 
 @end
@@ -36,15 +38,20 @@
 
 -(void)test{
     
-    generatingAllPossiblePopSequences(5);
+//    generatingAllPossiblePopSequences(5);
     
 //    [self matchedTest];
 //    [self sumOfAllPopSequenceTest];
 //    
-//    [self countOfOnes];
-//    
+    [self countOfOnes];
+//
 //    [self callPath];
     
+//    [self testMatrix];
+}
+
+-(void) testMatrix{
+    generateMatrix(4, 4);
 }
 
 -(void) matchedTest{
@@ -111,28 +118,45 @@
 
 -(void) countOfOnes{
     unsigned long long from = 0;
-    
     from = 10121041143;
     NSLog(@"%llu", countOfOneIn(from));
-    
     from = 1;
     NSLog(@"%llu", countOfOneIn(from));
-    
     from = 1113;
     NSLog(@"%llu", countOfOneIn(from));
-    
     from = 1;
     unsigned long long to = 5;
     NSLog(@"%llu", countOfOneInRange(from, to));
-    
     from = 1;
     to = 6;
     NSLog(@"%llu", countOfOneInRange(from, to));
-    
-    
     to = 101;
     NSLog(@"%llu", countOfOneInRange(from, to));
     
+    
+    unsigned int count = 0 ;
+    unsigned int * possibilities = nubmerOfUsingBalanceForNumberOfBalls(3, &count);
+    printf("\n");
+    for (int i = 0; i < count; i++) {
+        printf("--%d--", possibilities[i]);
+    }
+    free(possibilities);
+    
+    possibilities = nubmerOfUsingBalanceForNumberOfBalls(5745, &count);
+    printf("\n");
+    for (int i = 0; i < count; i++) {
+        printf("--%d--", possibilities[i]);
+    }
+    free(possibilities);
+
+    possibilities = nubmerOfUsingBalanceForNumberOfBalls(89564687, &count);
+    printf("\n");
+    for (int i = 0; i < count; i++) {
+        printf("--%d--", possibilities[i]);
+    }
+    free(possibilities);
+
+
 
 }
 

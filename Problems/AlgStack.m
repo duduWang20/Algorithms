@@ -390,8 +390,11 @@ unsigned long long countOfAllPossiblePopSequences(unsigned int unpushed, unsigne
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////
-
-void generatingAllPossiblePopSequences(unsigned int  n){
+/*
+ remove the push sequences 
+ and just keep the pop sequences
+ */
+void generatingAllPossiblePopSequences( long long  n){
     
     long long elements[n];
     for (int i= 0; i < n; i++) {
@@ -406,61 +409,37 @@ void generatingAllPossiblePopSequences(unsigned int  n){
     
     int elementsIndex = 0;
 
-    recursionGenerate(elements, elementsIndex, stack ,stackIndex, n);
-
 }
 
-void recursionGenerate(long long elements[],
-                       int elementIndex,
-                       long long stack[],
-                       long long stackIndex,
-                       unsigned int n){
-  
-    if (elementIndex < n && elementIndex >= 0) {
-        stackPush(elements, elementIndex, stack, stackIndex);
-        recursionGenerate(elements, elementIndex+1, stack ,stackIndex+1, n);
+
+
+static inline void generateRepresentationNumberSequence(long long n){
+    
+    unsigned long long representaions[n];
+    memcpy(representaions, 0, n*sizeof(unsigned long long));
+    representaions[0] = n;
+    
+    long long length = 1;
+    
+    while (representaions[9] > 1) {
         
+        //find the first one that great than 1
+        long long indexDecrease = length -1;
+        for (; indexDecrease >= 0; indexDecrease--) {
+            if (representaions[indexDecrease] > 1) {
+                representaions[indexDecrease] -= 1;
+                break;
+            }
+        }
+//        
+//        long long indexIncrease = indexDecrease+1;
+//        for (; index < length; index++) {
+//            if (representaions[index] > 1) {
+//                representaions[index] -= 1;
+//            }
+//        }
     }
     
-    
-    if (stackIndex < n && stackIndex >= 0) {
-        
-        stackPop(elements, elementIndex, stack, stackIndex);
-        recursionGenerate(elements, elementIndex+1, stack ,stackIndex+1, n);
-    }
-}
-
-
-static inline void stackPush(long long elements[],
-                                int elementIndex,
-                                long long stack[],
-                                long long stackInex){
-    stack[stackInex] = elements[elementIndex];
-}
-static inline void stackPop(long long elements[],
-                               int elementIndex,
-                               long long stack[],
-                               long long stackInex){
-    printf("%lld", stack[stackInex]);
-    stack[stackInex] = -1;
-}
-
-static inline void generatePush(long long elements[],
-                                int *elementIndex,
-                                long long stack[],
-                                long long *stackInex){
-    stack[*stackInex] = elements[*elementIndex];
-    (*stackInex)++;
-    (*elementIndex)++;
-}
-static inline void generatePop(long long elements[],
-                               int *elementIndex,
-                               long long stack[],
-                               long long *stackInex){
-    (*stackInex)--;
-//    (*elementIndex)--;
-    printf("%lld", stack[*stackInex]);
-    stack[*stackInex] = -1;
 }
 
 //////////////////////////////////////////////////////
@@ -484,6 +463,7 @@ unsigned char biggestUnsignedLongLongForNthPower(unsigned char base){
     }
     return number;
 }
+
 
 @end
 

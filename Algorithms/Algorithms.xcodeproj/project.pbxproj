@@ -19,6 +19,7 @@
 		D56B208C1EE55C0E00D6EA3B /* AlgCount.m in Sources */ = {isa = PBXBuildFile; fileRef = D56B208B1EE55C0E00D6EA3B /* AlgCount.m */; };
 		D56B208F1EE55C7D00D6EA3B /* AlgPath.m in Sources */ = {isa = PBXBuildFile; fileRef = D56B208E1EE55C7D00D6EA3B /* AlgPath.m */; };
 		D56B20921EE55D0D00D6EA3B /* AlgStack.m in Sources */ = {isa = PBXBuildFile; fileRef = D56B20911EE55D0D00D6EA3B /* AlgStack.m */; };
+		D5B9D0EC1EE8F75A005704A7 /* AlgMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B9D0EB1EE8F75A005704A7 /* AlgMatrix.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,8 @@
 		D56B208E1EE55C7D00D6EA3B /* AlgPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlgPath.m; sourceTree = "<group>"; };
 		D56B20901EE55D0D00D6EA3B /* AlgStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlgStack.h; sourceTree = "<group>"; };
 		D56B20911EE55D0D00D6EA3B /* AlgStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlgStack.m; sourceTree = "<group>"; };
+		D5B9D0EA1EE8F75A005704A7 /* AlgMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlgMatrix.h; sourceTree = "<group>"; };
+		D5B9D0EB1EE8F75A005704A7 /* AlgMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlgMatrix.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +149,8 @@
 				D56B208E1EE55C7D00D6EA3B /* AlgPath.m */,
 				D56B20901EE55D0D00D6EA3B /* AlgStack.h */,
 				D56B20911EE55D0D00D6EA3B /* AlgStack.m */,
+				D5B9D0EA1EE8F75A005704A7 /* AlgMatrix.h */,
+				D5B9D0EB1EE8F75A005704A7 /* AlgMatrix.m */,
 			);
 			name = Problems;
 			path = ../../Problems;
@@ -254,6 +259,7 @@
 				D56B208F1EE55C7D00D6EA3B /* AlgPath.m in Sources */,
 				D56B208C1EE55C0E00D6EA3B /* AlgCount.m in Sources */,
 				D5098A941EE063FE002644CA /* AlgString.m in Sources */,
+				D5B9D0EC1EE8F75A005704A7 /* AlgMatrix.m in Sources */,
 				D55B5D081ED9888200008F53 /* ViewController.m in Sources */,
 				D56B20921EE55D0D00D6EA3B /* AlgStack.m in Sources */,
 				D55B5D2D1ED9CC5E00008F53 /* README.md in Sources */,
