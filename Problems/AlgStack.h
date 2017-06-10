@@ -74,7 +74,7 @@ unsigned long long countOfAllPossiblePopSequences(unsigned int unpushed, unsigne
  输出所有可能的pop序列。
  为了简化问题，假设输入序列为1到n的整数序列。
  */
-void generatingAllPossiblePopSequences(long long  n);  //未完成
+void generatingAllPossiblePopSequences(long long  n);  //未完成  0 1 2 ... n-1
 
 static inline void generateRepresentationNumberSequence(long long n);
 // 2 ->  2,  1 1 ;
