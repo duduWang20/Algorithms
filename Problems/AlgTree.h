@@ -16,6 +16,7 @@ struct TreeNode{
     struct TreeNode * right;
     int value;
 };
+typedef struct TreeNode TreeNodeType;
 
 
 /*
@@ -25,6 +26,9 @@ struct TreeNode{
 void preorderTraversal(struct TreeNode * node);
 
 void preorderTraversalNonRecursion(struct TreeNode * node);
+
+
+void createAndTraversal(unsigned int nodeCount);
 
 
 

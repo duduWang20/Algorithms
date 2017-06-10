@@ -2,6 +2,8 @@
 
 #import "AlgPath.h"
 
+#include "AlgTree.h"
+
 
 @implementation AlgPath
 
@@ -238,6 +240,11 @@ void printFlags(unsigned int size, bool flags[], int diff, int count){
     printf("---- count = %d", count);
     
 }
+
+
+
+
+
 
 
 @end

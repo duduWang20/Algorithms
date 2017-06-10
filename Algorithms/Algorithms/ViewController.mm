@@ -8,7 +8,7 @@
 
 #import "ViewController.h"
 
-
+#include "AlgTree.h"
 
 @interface ViewController ()
 
@@ -20,11 +20,15 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    createAndTraversal(332);
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+    
+    
 }
 
 
