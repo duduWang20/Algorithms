@@ -90,60 +90,122 @@ unsigned int * nubmerOfUsingBalanceForNumberOfBalls(unsigned long long ballsNumb
 ///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
-void shortestPathsForColorNumber(unsigned int path[],
+unsigned int * shortestPathsForColorNumber(unsigned int path[],
                                  unsigned int pathLength,
                                  unsigned int colors[],
                                  unsigned int colorCount,
-                                 unsigned int * outPath,
                                  unsigned int * outPathLength){
     
-    int hashBest[pathLength];
-    int hashCurrent[pathLength];
-    int hashDestination[pathLength];
-    memset(hashBest, 0, pathLength * sizeof(int));
-    memset(hashCurrent, 0, pathLength * sizeof(int));
-    memset(hashDestination, 0, pathLength * sizeof(int));
+    assert(pathLength > colorCount);
     
-    int lowPos = 0;
-    int highPos = 0;  //* outPathLength = (highPos + pathLength - lowPos) mod pathLength
-    int bestLow = 0;
-    int bestHigh = 0;
+    unsigned int hashCurrent[pathLength];
+    unsigned int hashDestination[pathLength];
+    memset(hashCurrent, 0, pathLength * sizeof(unsigned int));
+    memset(hashDestination, 0, pathLength * sizeof(unsigned int));
+    
+    unsigned int lowPos = 0;
+    unsigned int highPos = 0;  //* outPathLength = (highPos + pathLength - lowPos) mod pathLength
+    unsigned int bestLow = 0;
+    unsigned int bestHigh = 0;
+    
+    unsigned int fistLow = pathLength+1;
+    unsigned int firstHigh = pathLength+1;
     
     for (; highPos < colorCount; highPos++) {
         hashDestination[colors[highPos]]++;
         hashCurrent[path[highPos]]++;
     }
     
-    
-    while (true) {
-        
-        //optimization
-        BOOL best = true;
-        for (int i = 0; i < colorCount; i++) {
-            unsigned int color = colors[i];
-            if (hashDestination[color] != hashCurrent[color]) {
-                best = false;
-                break;
-            }
-        }
-        
-        if (!best) {
-            hashCurrent[path[highPos]]++;
+    bool loop = true;
+    while (loop) {
+        if (!isBest(colors, colorCount, hashDestination, hashCurrent)) {
+            unsigned int value = path[highPos];
+            hashCurrent[value]++;
             highPos = (highPos + 1) % pathLength;
+            if (highPos == lowPos) {
+                loop = false;
+            }
         }else{
-            if (lowPos == highPos) {
+            shrinkLowPosition(path, pathLength, hashCurrent, hashDestination, &lowPos);
+            if (bestHigh == bestLow) {
                 bestLow = lowPos;
                 bestHigh = highPos;
-                memcpy(hashBest, hashCurrent, pathLength * sizeof(int));
+                fistLow = bestLow;
+                firstHigh = bestHigh;
             }else{
-                
+                //cmp with is better
+                unsigned int currentLength = (highPos - lowPos + pathLength) % pathLength;
+                unsigned int bestLength =  (bestHigh - bestLow + pathLength) % pathLength;
+                if (bestLength > currentLength) {
+                    bestLow = lowPos;
+                    bestHigh = highPos ;
+                }
+                if (firstHigh == highPos && fistLow == lowPos) {
+                    loop = false;
+                }
             }
+            forwardOneStep(path, pathLength, hashCurrent, hashDestination, &lowPos, &highPos);
         }
-        
     }
     
+    *outPathLength = (bestHigh - bestLow + pathLength) % pathLength;
+    if (*outPathLength == 0) {
+        return nil;
+    }else{
+        unsigned int * pathOut = malloc( (*outPathLength) * sizeof(unsigned int));
+        memset(pathOut, 0,  (*outPathLength)* sizeof(unsigned int)); //malloc,calloc,realloc类似.但是注意一个重要的区别,_alloca
+        for (int i = 0; i < *outPathLength; i++) {
+            int index = (bestLow + i) % pathLength;
+            pathOut[i] = path[index];
+        }
+    
+        return pathOut;
+    }
 }
 
+static inline bool isBest( unsigned int colors[],
+                           unsigned int colorCount,
+                           unsigned int *hashDestination,
+                           unsigned int *hashCurrent){
+    BOOL best = true;
+    for (int i = 0; i < colorCount; i++) {
+        unsigned int color = colors[i];
+        if (hashDestination[color] > hashCurrent[color]) {
+            best = false;
+            break;
+        }
+    }
+    return best;
+}
+
+static inline void shrinkLowPosition(unsigned int *path,
+                                     unsigned int pathLength,
+                                     unsigned int *hashCurrent,
+                                     unsigned int *hashDestination,
+                                     unsigned int *lowPos){
+    unsigned int index = *lowPos;
+    unsigned int value = path[index];
+    
+    while (hashCurrent[value] > hashDestination[value]) {
+        hashCurrent[value]--;
+        
+        index = (index + 1) % pathLength;
+        value = path[index];
+    }
+    
+    *lowPos = index;
+}
+
+static inline void forwardOneStep(unsigned int *path,
+                                  unsigned int pathLength,
+                                  unsigned int *hashCurrent,
+                                  unsigned int *hashDestination,
+                                  unsigned int *lowPos,
+                                  unsigned int *highPos){
+    unsigned int lvalue = path[*lowPos];
+    hashCurrent[lvalue]--;
+    *lowPos = ((*lowPos) + 1) % pathLength;
+}
 
 
 @end

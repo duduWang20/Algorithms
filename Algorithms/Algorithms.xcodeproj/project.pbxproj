@@ -14,12 +14,15 @@
 		D55B5D0B1ED9888200008F53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D55B5D091ED9888200008F53 /* Main.storyboard */; };
 		D55B5D0D1ED9888200008F53 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D55B5D0C1ED9888200008F53 /* Images.xcassets */; };
 		D55B5D101ED9888200008F53 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D55B5D0E1ED9888200008F53 /* LaunchScreen.xib */; };
-		D55B5D1C1ED9888200008F53 /* AlgorithmsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D55B5D1B1ED9888200008F53 /* AlgorithmsTests.m */; };
 		D55B5D2D1ED9CC5E00008F53 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D55B5D2C1ED9CC5E00008F53 /* README.md */; };
 		D56B208C1EE55C0E00D6EA3B /* AlgCount.m in Sources */ = {isa = PBXBuildFile; fileRef = D56B208B1EE55C0E00D6EA3B /* AlgCount.m */; };
 		D56B208F1EE55C7D00D6EA3B /* AlgPath.m in Sources */ = {isa = PBXBuildFile; fileRef = D56B208E1EE55C7D00D6EA3B /* AlgPath.m */; };
 		D56B20921EE55D0D00D6EA3B /* AlgStack.m in Sources */ = {isa = PBXBuildFile; fileRef = D56B20911EE55D0D00D6EA3B /* AlgStack.m */; };
 		D5B9D0EC1EE8F75A005704A7 /* AlgMatrix.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B9D0EB1EE8F75A005704A7 /* AlgMatrix.m */; };
+		D5B9D0F21EEBA940005704A7 /* CountTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B9D0F11EEBA940005704A7 /* CountTest.m */; };
+		D5B9D0F71EEBAFD9005704A7 /* PathTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B9D0F61EEBAFD9005704A7 /* PathTest.m */; };
+		D5B9D0FA1EEBB120005704A7 /* StringTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B9D0F91EEBB120005704A7 /* StringTest.m */; };
+		D5B9D0FD1EEBB1D7005704A7 /* StackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B9D0FC1EEBB1D7005704A7 /* StackTest.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +50,6 @@
 		D55B5D0F1ED9888200008F53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D55B5D151ED9888200008F53 /* AlgorithmsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlgorithmsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D55B5D1A1ED9888200008F53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D55B5D1B1ED9888200008F53 /* AlgorithmsTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AlgorithmsTests.m; sourceTree = "<group>"; };
 		D55B5D2C1ED9CC5E00008F53 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		D56B208A1EE55C0E00D6EA3B /* AlgCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlgCount.h; sourceTree = "<group>"; };
 		D56B208B1EE55C0E00D6EA3B /* AlgCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlgCount.m; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 		D56B20911EE55D0D00D6EA3B /* AlgStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlgStack.m; sourceTree = "<group>"; };
 		D5B9D0EA1EE8F75A005704A7 /* AlgMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlgMatrix.h; sourceTree = "<group>"; };
 		D5B9D0EB1EE8F75A005704A7 /* AlgMatrix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlgMatrix.m; sourceTree = "<group>"; };
+		D5B9D0F01EEBA940005704A7 /* CountTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountTest.h; sourceTree = "<group>"; };
+		D5B9D0F11EEBA940005704A7 /* CountTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountTest.m; sourceTree = "<group>"; };
+		D5B9D0F51EEBAFD9005704A7 /* PathTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PathTest.h; sourceTree = "<group>"; };
+		D5B9D0F61EEBAFD9005704A7 /* PathTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PathTest.m; sourceTree = "<group>"; };
+		D5B9D0F81EEBB120005704A7 /* StringTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringTest.h; sourceTree = "<group>"; };
+		D5B9D0F91EEBB120005704A7 /* StringTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringTest.m; sourceTree = "<group>"; };
+		D5B9D0FB1EEBB1D7005704A7 /* StackTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackTest.h; sourceTree = "<group>"; };
+		D5B9D0FC1EEBB1D7005704A7 /* StackTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackTest.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,8 +134,15 @@
 		D55B5D181ED9888200008F53 /* AlgorithmsTests */ = {
 			isa = PBXGroup;
 			children = (
-				D55B5D1B1ED9888200008F53 /* AlgorithmsTests.m */,
 				D55B5D191ED9888200008F53 /* Supporting Files */,
+				D5B9D0F01EEBA940005704A7 /* CountTest.h */,
+				D5B9D0F11EEBA940005704A7 /* CountTest.m */,
+				D5B9D0F51EEBAFD9005704A7 /* PathTest.h */,
+				D5B9D0F61EEBAFD9005704A7 /* PathTest.m */,
+				D5B9D0F81EEBB120005704A7 /* StringTest.h */,
+				D5B9D0F91EEBB120005704A7 /* StringTest.m */,
+				D5B9D0FB1EEBB1D7005704A7 /* StackTest.h */,
+				D5B9D0FC1EEBB1D7005704A7 /* StackTest.m */,
 			);
 			path = AlgorithmsTests;
 			sourceTree = "<group>";
@@ -272,7 +289,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D55B5D1C1ED9888200008F53 /* AlgorithmsTests.m in Sources */,
+				D5B9D0FD1EEBB1D7005704A7 /* StackTest.m in Sources */,
+				D5B9D0F71EEBAFD9005704A7 /* PathTest.m in Sources */,
+				D5B9D0F21EEBA940005704A7 /* CountTest.m in Sources */,
+				D5B9D0FA1EEBB120005704A7 /* StringTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,6 +429,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -428,6 +449,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
 				INFOPLIST_FILE = AlgorithmsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

@@ -47,9 +47,6 @@ unsigned long long  countOfOneInRange(unsigned long long from, unsigned long lon
  而且只输入一次，如何从这个输入流中随机取得m 个记录。
  ANSWER
  
- That is, keep total number count N. If N<=m, just keep it.
- For N>m, generate a random number R=rand(N) in [0, N), replace a[R] with new number if R falls in [0, m).
- 
  
  3.大量的URL 字符串，如何从中去除重复的，优化时间空间复杂度
  ANSWER
@@ -94,17 +91,20 @@ unsigned int * nubmerOfUsingBalanceForNumberOfBalls(unsigned long long ballsNumb
 
 /* 
  题目2  undone
- path[]  首尾相连的珠子(m 个),在此简化为自然数
- color[]  N 种颜色(N<=10)
+ path[]  首尾相连的珠子(m 个),在此编码为从0到m-1的自然数 path[i] IN M ={  0 1 2  ... m-1 }
+ color[]  N 种颜色(N<=10)  color[i]  IN M
  
  策略  哈希表
+ 
+ 可优化:
+ 1 根据颜色的历史信息,减少对isBest的调用;
+ 2 根据历史信息及时调整考察的区域，减少对shrinkLowPosition的调用
  */
-void shortestPathsForColorNumber(unsigned int path[],
-                                 unsigned int pathLength,
-                                 unsigned int color[],
-                                 unsigned int colorCount,
-                                 unsigned int * outPath,
-                                 unsigned int * outPathLength);
+unsigned int * shortestPathsForColorNumber(unsigned int path[],
+                                           unsigned int pathLength,
+                                           unsigned int colors[],
+                                           unsigned int colorCount,
+                                           unsigned int * outPathLength);
 
 
 
