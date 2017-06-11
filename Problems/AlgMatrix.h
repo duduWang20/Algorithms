@@ -70,9 +70,10 @@ typedef struct PenaltyNode PenaltyNodeType;
  ////////////////////////////////////////////////////
  column changings :
  -->
+ 
+ 策略 ： 分块
 
  */
-
 
 void biggestTwoOrderMatrix(PenaltyNodeType ** maxtrix, int dimRow, int dimColumn);  //undone
 void generateMatrix(int dimRow, int dimColumn);  //undone

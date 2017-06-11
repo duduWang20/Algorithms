@@ -91,8 +91,25 @@ void createAndTraversal(unsigned int nodeCount){
         node->left = left;
         node->value = count++;
     }
+    travelQueue.clear();
     
     preorderTraversalNonRecursion(head);
+    
+    
+    travelQueue.push_front(head);
+    while (!travelQueue.empty()) {
+        struct TreeNode * node = travelQueue.back();
+        travelQueue.pop_back();
+        struct TreeNode * left = node->left;
+        struct TreeNode * right = node->right;
+        if (left) {
+            travelQueue.push_front(left);
+        }
+        if (right) {
+            travelQueue.push_front(right);
+        }
+        free(node);
+    }
     
 }
 
