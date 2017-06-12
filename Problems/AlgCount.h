@@ -90,7 +90,7 @@ unsigned int * nubmerOfUsingBalanceForNumberOfBalls(unsigned long long ballsNumb
  */
 
 /* 
- 题目2  undone
+ 题目2
  path[]  首尾相连的珠子(m 个),在此编码为从0到m-1的自然数 path[i] IN M ={  0 1 2  ... m-1 }
  color[]  N 种颜色(N<=10)  color[i]  IN M
  

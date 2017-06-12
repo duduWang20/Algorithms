@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController{
+    NSString *_foo2;
+}
 
-
+@property (strong) NSMutableArray *array;
+@property (strong) NSString *foo;
 @end
 
