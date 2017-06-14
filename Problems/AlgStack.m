@@ -394,6 +394,50 @@ unsigned long long countOfAllPossiblePopSequences(unsigned int unpushed, unsigne
  remove the push sequences 
  and just keep the pop sequences
  */
+
+// 2 ->  2,  1 1 ;
+//3 -> 3,   2 1  , 1 1 1
+// 4 -> 4, 3 1 , 2 2 , 2 1 1 , 1 1 1 1
+
+/*  下面做简单的分析，详细的分析 等我拿到《计算机程序设计艺术4A》如需要添加，我会适当的添加一些
+ 
+ 1 动态编程法，逐步生成  1 2 3  ... n的生成序列
+ 2
+ 
+ 
+ first let's see the following pop sequeces with just five 5 elements:
+ 
+ 5   C(5,0)=1
+ push(0)pop(0) push(1)pop(1) push(2)pop(2) push(3)pop(3)   push(4)pop(4) 00 11 22 33 44
+ 
+ 4 1   C(4,1)=4
+ push(0)push(1)pop(1)pop(0)  push(2)pop(2) push(3)pop(3)   push(4)pop(4) 0110 22 33 44
+ push(0)pop(0) push(1)push(2)pop(2)pop(1) push(3)pop(3) push(4)pop(4)    00 1221 33 44
+ push(0)pop(0) push(1)pop(1)  push(2)push(3)pop(3)pop(2) push(4)pop(4)   00 11 2332 44
+ push(0)pop(0) push(1)pop(1) push(2)pop(2) push(3)push(4)pop(4)pop(3)    00 11 22 3443
+ 
+ 3 2  C(3,2)=3
+ push(0)push(1)pop(1)pop(0) push(2)push(3)pop(3)pop(2)   push(4) pop(4)   0110 2332 44
+ push(0)push(1)pop(1)pop(0) push(2) pop(2) push(3)push(4)pop(4)pop(3)     0110 22 3443
+ push(0) pop(0) push(1)push(2)pop(2)pop(1) push(3)push(4)pop(3)pop(4)     00 1221 3443
+ 
+ 3 1 1 C(3,1)*C(1,1)=3
+ push(0)push(1)push(2)pop(2)pop(1)pop(0)   push(3)pop(3)   push(4)pop(4)  012210 33 44
+ push(0)pop(0)  push(1)push(2)push(3)pop(3)pop(2)pop(1)   push(4)pop(4)   00 123321 44
+ push(0)pop(0) push(1)pop(1)  push(2)push(3)push(4)pop(4)pop(3)pop(2)     00 11 234432
+ 
+ 2 2 1 C(2,2)*C(2,1)=2
+ push(0)push(1)pop(1)pop(0) push(2)push(3)push(4)pop(4)pop(3)pop(2)       0110 234432
+ push(0)push(1)push(2)pop(2)pop(1)pop(0) push(3)push(4)pop(4)pop(3)       012210 3443
+ 
+ 2 1 1 1  C(2,1)*C(1,1)*C(1,1)=2
+ push(0)push(1)push(2)push(3)pop(3)pop(2)pop(1)pop(0)  push(4)pop(4)     01233210 44
+ push(0)pop(0)  push(1)push(2)push(3)push(4)pop(1)pop(2)pop(3)pop(4)     00 12344321
+ 
+ 1 1 1 1 1
+ push(0)push(1)push(2)push(3)push(4) pop(4)pop(3)pop(2)pop(1)pop(0)      01234 43210
+ 
+ */
 void generatingAllPossiblePopSequences( long long  n){
     
     long long elements[n];

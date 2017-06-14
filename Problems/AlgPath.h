@@ -26,6 +26,7 @@ struct CellularStructure{
  */
 void shortestPathsForCellularStructure(struct CellularStructure * fromCelluar, struct CellularStructure * toCelluar);
 
+
 /*
  32.（数组、规划）
  有两个序列a,b，大小都为n,序列元素的值任意整数，无序；

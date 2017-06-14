@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D5098A941EE063FE002644CA /* AlgString.m in Sources */ = {isa = PBXBuildFile; fileRef = D5098A931EE063FD002644CA /* AlgString.m */; };
+		D5274AD41EEECE1700BC5AFE /* InternalSortingP73.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5274AD21EEECE1700BC5AFE /* InternalSortingP73.cpp */; };
 		D55B5D021ED9888200008F53 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D55B5D011ED9888200008F53 /* main.m */; };
 		D55B5D051ED9888200008F53 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D55B5D041ED9888200008F53 /* AppDelegate.m */; };
 		D55B5D081ED9888200008F53 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = D55B5D071ED9888200008F53 /* ViewController.mm */; };
@@ -43,6 +44,9 @@
 /* Begin PBXFileReference section */
 		D5098A921EE063FD002644CA /* AlgString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlgString.h; sourceTree = "<group>"; };
 		D5098A931EE063FD002644CA /* AlgString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlgString.m; sourceTree = "<group>"; };
+		D5274AD11EEEC85900BC5AFE /* readme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = readme.h; sourceTree = "<group>"; };
+		D5274AD21EEECE1700BC5AFE /* InternalSortingP73.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = InternalSortingP73.cpp; sourceTree = "<group>"; };
+		D5274AD31EEECE1700BC5AFE /* InternalSortingP73.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternalSortingP73.h; sourceTree = "<group>"; };
 		D55B5CFC1ED9888100008F53 /* Algorithms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Algorithms.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D55B5D001ED9888100008F53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D55B5D011ED9888200008F53 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -102,6 +106,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D5274AD01EEEC82700BC5AFE /* Sorting */ = {
+			isa = PBXGroup;
+			children = (
+				D5274AD11EEEC85900BC5AFE /* readme.h */,
+				D5274AD21EEECE1700BC5AFE /* InternalSortingP73.cpp */,
+				D5274AD31EEECE1700BC5AFE /* InternalSortingP73.h */,
+			);
+			name = Sorting;
+			path = ../../Sorting;
+			sourceTree = "<group>";
+		};
 		D55B5CF31ED9888100008F53 = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +141,7 @@
 		D55B5CFE1ED9888100008F53 /* Algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				D5274AD01EEEC82700BC5AFE /* Sorting */,
 				D55B5D281ED9CC4500008F53 /* Problems */,
 				D55B5D031ED9888200008F53 /* AppDelegate.h */,
 				D55B5D041ED9888200008F53 /* AppDelegate.m */,
@@ -298,6 +314,7 @@
 			files = (
 				D56B208F1EE55C7D00D6EA3B /* AlgPath.m in Sources */,
 				D56B208C1EE55C0E00D6EA3B /* AlgCount.m in Sources */,
+				D5274AD41EEECE1700BC5AFE /* InternalSortingP73.cpp in Sources */,
 				D5098A941EE063FE002644CA /* AlgString.m in Sources */,
 				D5B9D0EC1EE8F75A005704A7 /* AlgMatrix.m in Sources */,
 				D55B5D081ED9888200008F53 /* ViewController.mm in Sources */,

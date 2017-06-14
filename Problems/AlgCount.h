@@ -86,7 +86,6 @@ unsigned int * nubmerOfUsingBalanceForNumberOfBalls(unsigned long long ballsNumb
  *词语的数量级为10W；
  *每个词至多可以与1W 个词搭配
  当用户输入中国人民的时候，要求返回与这个搭配词组相关的信息。
- 
  */
 
 /* 
