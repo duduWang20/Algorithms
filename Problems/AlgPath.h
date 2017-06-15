@@ -44,32 +44,40 @@ void exchangingForMinDifferenceInSumPrintAll(long long serialA[], long long sera
  
  策略：
  1 vy 排序  nlgn
- 2 vx 排序, 设置preX和postX。复杂度为nlgn。 IF positionX == 0 then Head <-- node
- 3 BestNodes = {Head,Head->postX} , BestDistance = distance(BestNodes) , HEAD = HEAD->postX  ,NEXT =  HEAD->postX
+ 2 vx 排序  nlgn。
+    IF PlaneNode->positionX == 0
+        THEN Head  =  node
+ 
+    NEXT    =       HEAD->postX
+    BestNodes       =       {Head, Next}
+    BestDistance    =       distance(BestNodes)
+ 
  
  3 while NEXT != nil
  
-    UpYNode = NEXT->postX;
-    LowNode = nil;
-    while( distanceX(NEXT,UpYNode)<BestDistance)
+ //查找小于BestDistance  可以扩展到n维空间
+    DistanceY = abs( NEXT->vy, HEAD->vy )
+    DistanceY = abs( NEXT->vx, HEAD->vx )
+    UpYNode = NEXT;
+    while( DistanceX < BestDistance)
         UpYNode = UpYNode->postX;
-        if( LowNode == nil)
-            LowNode = UpYNode
-        else{
-            if( abs ( distanceY(NEXT,UpYNode) ） > abs( distanceY(NEXT,UpYNode) ) )
-            LowNode = UpYNode
-        }
+        DistanceY =  MIN( abs( NEXT->vy, UnYNode->vy ), DistanceY)
+    BestDistance = sqrt(DistanceY*DistanceY, DistanceX*DistanceX）
+ //n维空间扩展
  
- //查找最近Y Z
-    NEXT =  HEAD->postX  ,
-    LengY =  abs(HEAD.vy - NEXT.vy)
-        =  abs(HEAD.vx - NEXT.vx)
-    if( abs
+    while( BestDistance <
+        minNode = min( abs(node.vx - preX.vx,node.vx - postX.vx)
+        node.vmin = distance(node,minNode)
  
  
-   minNode = min( abs(node.vx - preX.vx,node.vx - postX.vx)
-   node.vmin = distance(node,minNode)
+    HEAD->bestNode = BestNodes[1];
  
+ //ready for next
+    HEAD = NEXT;
+    NEXT = HEAD->postX
+    BestNodes       =       {Head, Next}
+    BestDistance    =       distance(BestNodes)
+
  
  5 compute all distances currNode in { minNode.vy to node.vy} .
    if the new value < vmin then  minNode = newNode
@@ -94,8 +102,10 @@ struct PlaneNode{
     struct PlaneNode * preY;       //vy在升续排列中的位置  init = null
     struct PlaneNode * postY;
     
-    int positionX;//x坐标排序位置  0-n-1
-    int positionY;//y坐标排序位置  0-n-1
+    struct PlaneNode * bestNode; //init = null
+    
+    int positionX;//x坐标排序位置  {0,n-1}
+    int positionY;//y坐标排序位置  {0,n-1}
     
     float vx;         //平面坐标x的值
     float vy;         //平面坐标y的值
