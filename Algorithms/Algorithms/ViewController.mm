@@ -20,13 +20,6 @@
 
 @synthesize array = _array;
 
-+(void) sdfsfsfs{
-    
-    NSLog(@"%@", NSStringFromClass([self class]));
-    NSLog(@"%@", NSStringFromClass([super class]));
-}
-
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -36,23 +29,26 @@
     self.array = [NSMutableArray arrayWithObjects:[NSObject new], [NSObject new], nil ];
     [self.array removeObjectAtIndex:0];
     
-    _foo2 = @"sdfsdf";
+    NSLog(@"The size of an int is: %lu bytes.",sizeof(int));
+    NSLog(@"The size of an int is: %lu bytes.",sizeof(NSInteger));
+    NSLog(@"The size of a short int is: %lu bytes.",sizeof(short int));
+    NSLog(@"The size of a long int is: %lu bytes.",sizeof(long int));
+    NSLog(@"The size of a float is: %lu bytes.",sizeof(float));
+    NSLog(@"The size of a double is: %lu bytes.",sizeof(double));
     
-    [self setValue:@"23" forKey:@"_foo2"];
-    [self setValue:@"23" forKey:@"foo2"];
+    NSLog(@"The size of a char is: %lu bytes.",sizeof(char));
+    NSLog(@"The size of a bool is: %lu bytes.",sizeof(bool));
     
-    
-    [ViewController sdfsfsfs];
+    BOOL B =nil;
+    NSLog(@"The size of a bool is: %lu bytes.",sizeof(BOOL));
+    NSLog(@"The size of a bool is: %@.",B);
 
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSLog(@"%@", NSStringFromClass([self class]));
-
-    });
+    Boolean lean = 'a';
+    NSLog(@"The size of a bool is: %lu bytes.",sizeof(Boolean));
+    NSLog(@"The size of a bool is: %c.",lean);
     
-    
-    createAndTraversal(332);
+//    createAndTraversal(332);
 }
-
 
 
 -(void) setArray:(NSMutableArray *)array{

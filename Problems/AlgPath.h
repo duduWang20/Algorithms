@@ -38,6 +38,69 @@ void shortestPathsForCellularStructure(struct CellularStructure * fromCelluar, s
 void exchangingForMinDifferenceInSum(long long serialA[], long long serailB[], unsigned int length);
 void exchangingForMinDifferenceInSumPrintAll(long long serialA[], long long serailB[], unsigned int length);
 
+/*
+ 快手 今天下午面试题
+ 平面上有n个点 求距离最短的两个点
+ 
+ 策略：
+ 1 vy 排序  nlgn
+ 2 vx 排序, 设置preX和postX。复杂度为nlgn。 IF positionX == 0 then Head <-- node
+ 3 BestNodes = {Head,Head->postX} , BestDistance = distance(BestNodes) , HEAD = HEAD->postX  ,NEXT =  HEAD->postX
+ 
+ 3 while NEXT != nil
+ 
+    UpYNode = NEXT->postX;
+    LowNode = nil;
+    while( distanceX(NEXT,UpYNode)<BestDistance)
+        UpYNode = UpYNode->postX;
+        if( LowNode == nil)
+            LowNode = UpYNode
+        else{
+            if( abs ( distanceY(NEXT,UpYNode) ） > abs( distanceY(NEXT,UpYNode) ) )
+            LowNode = UpYNode
+        }
+ 
+ //查找最近Y Z
+    NEXT =  HEAD->postX  ,
+    LengY =  abs(HEAD.vy - NEXT.vy)
+        =  abs(HEAD.vx - NEXT.vx)
+    if( abs
+ 
+ 
+   minNode = min( abs(node.vx - preX.vx,node.vx - postX.vx)
+   node.vmin = distance(node,minNode)
+ 
+ 
+ 5 compute all distances currNode in { minNode.vy to node.vy} .
+   if the new value < vmin then  minNode = newNode
+ 
+ 
+   (N/2次比较的概率为 1/2)  4和5的复杂度为 n*n/2
+ 
+ 
+ 优化：在4和5中综合考虑集合 { minNode.v to node.v}元素个数最少的 . 
+ 这样 N/4次比较的概率为 7/16, 比较接近 1/2的概率. 复杂度略小于n*n/4
+ 
+ O = 2*n*Log(n) + n*n/4
+ 
+ */
+
+/*
+ 在n维空间中情况
+ */
+struct PlaneNode{
+    struct PlaneNode * postX;       //vx在升续排列中的位置  init = null
+    
+    struct PlaneNode * preY;       //vy在升续排列中的位置  init = null
+    struct PlaneNode * postY;
+    
+    int positionX;//x坐标排序位置  0-n-1
+    int positionY;//y坐标排序位置  0-n-1
+    
+    float vx;         //平面坐标x的值
+    float vy;         //平面坐标y的值
+};
+void shortestPath(unsigned int planeNoades[], unsigned int nodeCount);
 
 
 @end

@@ -244,6 +244,20 @@ void printFlags(unsigned int size, bool flags[], int diff, int count){
 
 
 
+/*
+ 面试题
+ 平面上有n个点 求距离最短的两个点
+ */
+//struct PlaneNode{
+//    float px;
+//    float py;
+//};
+
+void shortestPath(unsigned int planeNoades[], unsigned int nodeCount){
+    
+    
+}
+
 
 
 

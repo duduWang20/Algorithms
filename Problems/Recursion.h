@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Recursion : NSObject
+@interface Recursion : NSObject{
+
+}
 
 
 /*
