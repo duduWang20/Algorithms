@@ -200,7 +200,6 @@ void shortestDistanceOfTwoNodesInPlane(struct PlaneNode *planeNoades, unsigned i
         
     }
     
-    
     int i = 0;
     for (; i < nodeCount-1; i++) {
         printf("\n===========\n");
@@ -249,6 +248,20 @@ void planeNodesGenerate(int count){
 static inline int uniform_int(int a, int b) {
     return (int)(rand()%(b - a + 1)) + a ;
 }
+
+
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+void shortestDistanceOfTwoNodesInCube(struct PlaneNode planeNoades[], unsigned int nodeCount){
+    
+}
+
+void cubeNodesGenerate(int count){
+    
+}
+
 
 
 @end
