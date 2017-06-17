@@ -58,11 +58,10 @@ static inline void sortAccordingY(struct PlaneNode *planeNoades, struct SortNode
     sortedY[i].position = i;
     planeNode->positionY = i;
 }
-static inline void sortAccordingX(struct PlaneNode *planeNoades, struct SortNode *sortedY, unsigned int nodeCount){
+static inline void sortAccordingX(struct PlaneNode *planeNoades, struct SortNode *sortedX, unsigned int nodeCount){
     struct PlaneNode * planeNode = NULL;
     int i = 0;
     
-    struct SortNode * sortedX = malloc(nodeCount * sizeof(struct SortNode));
     memset(sortedX, 0, sizeof(struct SortNode) * nodeCount);
     for (;i < nodeCount; i++) {
         sortedX[i].node = &planeNoades[i];
@@ -90,11 +89,13 @@ static inline float bestDistance(const struct PlaneNode * node1, const struct Pl
 
 void shortestDistanceOfTwoNodesInPlane(struct PlaneNode *planeNoades, unsigned int nodeCount){
     
+    
+    struct SortNode * sortedX = malloc(nodeCount * sizeof(struct SortNode));
+    sortAccordingX(planeNoades, sortedX, nodeCount);
+    
     struct SortNode * sortedY = malloc(nodeCount * sizeof(struct SortNode));
     sortAccordingY(planeNoades, sortedY, nodeCount);
-    struct SortNode * sortedX = malloc(nodeCount * sizeof(struct SortNode));
-    sortAccordingY(planeNoades, sortedX, nodeCount);
-
+    
     
     struct PlaneNode * xHead = (struct PlaneNode *) (sortedX[0].node);
     struct PlaneNode * xNext = (struct PlaneNode *) (sortedX[1].node);
@@ -220,7 +221,7 @@ void shortestDistanceOfTwoNodesInPlane(struct PlaneNode *planeNoades, unsigned i
 }
 
 
-//////////////////
+//////////////////////////////////////////////////////
 
 void planeNodesGenerate(int count){
     
@@ -245,11 +246,6 @@ void planeNodesGenerate(int count){
     
 }
 
-static inline int uniform_int(int a, int b) {
-    return (int)(rand()%(b - a + 1)) + a ;
-}
-
-
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
@@ -260,6 +256,15 @@ void shortestDistanceOfTwoNodesInCube(struct PlaneNode planeNoades[], unsigned i
 
 void cubeNodesGenerate(int count){
     
+}
+
+
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////
+
+static inline int uniform_int(int a, int b) {
+    return (int)(rand()%(b - a + 1)) + a ;
 }
 
 

@@ -26,7 +26,7 @@
 - (void)testExample {
     // This is an example of a functional test case.
     
-    testShortestDistanceOfTwoNodesInPlane();
+    testShortestInPlane();
 }
 
 - (void)testPerformanceExample {
@@ -38,7 +38,14 @@
 
 ////////////////////////////////////////////////////////////////////////
 
-void testShortestDistanceOfTwoNodesInPlane(){
+void testShortestInPlane(){
+    planeNodesGenerate(100);
+    planeNodesGenerate(1000);
+    planeNodesGenerate(2000);
+}
+
+
+void testShortestInCube(){
     planeNodesGenerate(100);
     planeNodesGenerate(1000);
     planeNodesGenerate(2000);
