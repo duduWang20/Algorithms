@@ -8,18 +8,17 @@
 
 #import <Foundation/Foundation.h>
 
+
+//git remote set-url origin git@github.com:username/repository
+
+
 struct PlaneNode{
-//    struct PlaneNode * postX;       //vx在升续排列中的位置  init = null
-//    struct PlaneNode * postY;       //vy在升续排列中的位置  init = null
     struct PlaneNode * bestNode;    //init = null
-    
     int positionX;//x坐标排序位置  {0,n-1}
     int positionY;//y坐标排序位置  {0,n-1}
-    
     int vx;         //平面坐标x的值
     int vy;         //平面坐标y的值
 };
-
 
 
 @interface AlgGraph : NSObject

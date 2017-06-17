@@ -37,16 +37,10 @@ static inline int compare4PlaneNodeOnY(const void * node1, const void *node2){
     return dlt;
 }
 
-void shortestDistanceOfTwoNodesInPlane(struct PlaneNode *planeNoades, unsigned int nodeCount){
-    
+static inline void sortAccordingY(struct PlaneNode *planeNoades, struct SortNode *sortedY, unsigned int nodeCount){
     struct PlaneNode * planeNode = NULL;
     int i = 0;
     
-    ///////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////
-    //sort according Y
-    struct SortNode * sortedY = malloc(nodeCount * sizeof(struct SortNode));
     memset(sortedY, 0, sizeof(struct SortNode) * nodeCount);
     i = 0;
     for (; i < nodeCount; i++) {
@@ -58,19 +52,16 @@ void shortestDistanceOfTwoNodesInPlane(struct PlaneNode *planeNoades, unsigned i
         sortedY[i].position = i;
         
         planeNode = sortedY[i].node;
-//        planeNode->postY = sortedY[i+1].node;
         planeNode->positionY = i;
     };
     planeNode = sortedY[i].node;
     sortedY[i].position = i;
     planeNode->positionY = i;
+}
+static inline void sortAccordingX(struct PlaneNode *planeNoades, struct SortNode *sortedY, unsigned int nodeCount){
+    struct PlaneNode * planeNode = NULL;
+    int i = 0;
     
-    ///////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////
-    //sort according X
-    planeNode = NULL;
-    i = 0;
     struct SortNode * sortedX = malloc(nodeCount * sizeof(struct SortNode));
     memset(sortedX, 0, sizeof(struct SortNode) * nodeCount);
     for (;i < nodeCount; i++) {
@@ -83,17 +74,28 @@ void shortestDistanceOfTwoNodesInPlane(struct PlaneNode *planeNoades, unsigned i
         sortedX[i].position = i;
         
         planeNode = sortedX[i].node;
-//        planeNode->postX = sortedX[i+1].node;
         planeNode->positionX = i;
     };
     planeNode = sortedX[i].node;
     sortedX[i].position = i;
     planeNode->positionX = i;
+}
+
+static inline float bestDistance(const struct PlaneNode * node1, const struct PlaneNode * node2 ){
+    float dltX = node1->vx - node2->vx;
+    float dltY = node1->vy - node2->vy;
+    return sqrtf( dltX*dltX + dltY* dltY);
+}
+
+
+void shortestDistanceOfTwoNodesInPlane(struct PlaneNode *planeNoades, unsigned int nodeCount){
     
+    struct SortNode * sortedY = malloc(nodeCount * sizeof(struct SortNode));
+    sortAccordingY(planeNoades, sortedY, nodeCount);
+    struct SortNode * sortedX = malloc(nodeCount * sizeof(struct SortNode));
+    sortAccordingY(planeNoades, sortedX, nodeCount);
+
     
-    ///////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////
     struct PlaneNode * xHead = (struct PlaneNode *) (sortedX[0].node);
     struct PlaneNode * xNext = (struct PlaneNode *) (sortedX[1].node);
     float distacneBest = bestDistance(xHead, xNext);
@@ -101,19 +103,44 @@ void shortestDistanceOfTwoNodesInPlane(struct PlaneNode *planeNoades, unsigned i
     xHead->bestNode = xNext;
     
     int xHeadIndex = 0;
-    while (xNext) {
+    while (xNext && xHead) {
         
         float distanceX = 0;
+        float distanceY = ABS(xHead->vy - xNext->vy);
 
         /////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////
-        //for every dimenstion Y Z ... finding min dlt Y
-        
-        float distanceY = ABS(xHead->vy - xNext->vy);
-        int xUpIndex = xHeadIndex + 2;
-        if (xUpIndex+1 == nodeCount) {
-            break;
+        //move xHEXT that   xHead->vx != xNext->vx
+        int xNextIndex = xHeadIndex + 1;
+        while (xHead->vx == xNext->vx) {
+            if (xNextIndex+1 == nodeCount) {
+                break;
+            }
+            xNextIndex++;
+            struct PlaneNode * xzeroNode = (struct PlaneNode *) (sortedX[xNextIndex].node);
+            float ldistance = bestDistance(xHead, xzeroNode);
+            xNext = xzeroNode;
+            distanceY = MIN(ABS(xHead->vy - xNext->vy), distanceY);
+            if (ldistance < distacneBest ) {
+                distacneBest = ldistance;
+                distanceSearch = ldistance;
+                xHead->bestNode = xNext;
+            }
+            if (ldistance == 0) {
+                NSLog(@"distance search = 0");
+            }
         }
+        assert(xHead->vx != xNext->vx || xNextIndex+1 == nodeCount);
+        
+      
+        /////////////////////////////////////////////////////////////////////
+        /////////////////////////////////////////////////////////////////////
+        //for every dimenstion Y Z ... finding min dlt Y
+        int xUpIndex = xNextIndex + 1;
+        if (xUpIndex+1 >= nodeCount) {
+            goto RESET;
+        }
+       
         struct PlaneNode * xUp = (struct PlaneNode *) (sortedX[xUpIndex].node);
         distanceX = ABS(xHead->vx - xNext->vx);
         while (distanceX < distacneBest && xUpIndex < nodeCount) {
@@ -122,11 +149,21 @@ void shortestDistanceOfTwoNodesInPlane(struct PlaneNode *planeNoades, unsigned i
             distanceX = ABS(xHead->vx - xUp->vx);
             xUpIndex++;
         }
+        if (distanceSearch == 0) {
+            NSLog(@"distance search = 0");
+        }
         //shrink search range
         if (xUp != xNext) {
             float dltX = xHead->vx - xNext->vx;
             float dltY = distanceY;
             distanceSearch = MIN(sqrtf( dltX*dltX + dltY* dltY), distanceSearch);
+            if (distanceSearch == 0) {
+                NSLog(@"distance search = 0");
+            }
+        }
+        
+        if (distanceSearch == 0) {
+            NSLog(@"distance search = 0");
         }
         
         /////////////////////////////////////////////////////////////////////
@@ -136,7 +173,7 @@ void shortestDistanceOfTwoNodesInPlane(struct PlaneNode *planeNoades, unsigned i
         int indexBest = xHeadIndex + 2;
         distanceX = ABS(xHead->vx - xNext->vx);
         
-        while (distanceX < distanceSearch && indexBest < nodeCount) {
+        while ( distanceX < distanceSearch && indexBest < nodeCount) {
             struct PlaneNode * node = (struct PlaneNode *) (sortedX[indexBest].node);
             float distacne = bestDistance(xHead, node);
             if (distacne < distacneBest) {
@@ -147,36 +184,44 @@ void shortestDistanceOfTwoNodesInPlane(struct PlaneNode *planeNoades, unsigned i
             indexBest++;
         }
         
+    RESET:
+        assert(xHead->bestNode != NULL);
         xHeadIndex++;
-        xHead = (struct PlaneNode *) (sortedX[xHeadIndex].node);;
+        xHead = (struct PlaneNode *) (sortedX[xHeadIndex].node);
+        if (xHeadIndex + 1 >= nodeCount) {
+            xNext = NULL;
+        }else
         xNext = (struct PlaneNode *) (sortedX[xHeadIndex+1].node);
-        distacneBest = bestDistance(xHead, xNext);
-        distanceSearch = distacneBest;
-        xHead->bestNode = xNext;
+        if (xNext) {
+            distacneBest = bestDistance(xHead, xNext);
+            distanceSearch = distacneBest;
+            xHead->bestNode = xNext;
+        }
+        
     }
     
     
-    
-    i = 0;
-    for (; i < nodeCount-2; i++) {
+    int i = 0;
+    for (; i < nodeCount-1; i++) {
         printf("\n===========\n");
-        printf("x1=%d, x2=%d ,y1=%d ,y2=%d ,  distance = %f\n",
-               planeNoades[i].vx,
-               planeNoades[i+1].vx,
-               planeNoades[i].vy,
-               planeNoades[i+1].vy, bestDistance( &planeNoades[i],  &planeNoades[i+1]));
-        
+        struct PlaneNode* node = &planeNoades[i];
+        if (node->bestNode != NULL) {
+            printf("x1=%d, x2=%d ,y1=%d ,y2=%d ,  distance = %f\n",
+                   node->vx,
+                   node->bestNode->vx,
+                   node->vy,
+                   node->bestNode->vy, bestDistance( node,  node->bestNode));
+        }else{
+            printf("x1=%d, x2=%d  end of \n",  node->vx, node->vy);
+        }
         printf("\n===========\n");
     }
     
     
 }
 
-static inline float bestDistance(const struct PlaneNode * node1, const struct PlaneNode * node2 ){
-    float dltX = node1->vx - node2->vx;
-    float dltY = node1->vy - node2->vy;
-    return sqrtf( dltX*dltX + dltY* dltY);
-}
+
+//////////////////
 
 void planeNodesGenerate(int count){
     
@@ -186,11 +231,10 @@ void planeNodesGenerate(int count){
     
     for (int i = 0; i < count; i++) {
         struct PlaneNode *lnode = &node[i];
+        
         lnode->vx = uniform_int(1, 1000);
         lnode->vy = uniform_int(1, 1000);
         
-//        lnode->postX = NULL;
-//        lnode->postY = NULL;
         lnode->bestNode = NULL;
         
         lnode->positionX = -1;
