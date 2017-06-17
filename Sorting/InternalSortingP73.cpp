@@ -12,7 +12,8 @@
 #include <stdlib.h>
 #include <string>
 #include <iostream>
-#include <ext/hash_map>
+//#include <ext/hash_map>
+#include <unordered_map>
 #include <stack>
 #include <vector>
 
@@ -21,4 +22,4 @@
 
 
 using namespace std;
-using namespace __gnu_cxx;
+//using namespace __gnu_cxx;

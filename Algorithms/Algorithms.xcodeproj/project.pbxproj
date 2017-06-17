@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D74A1A61EF2BBD400066FBA /* libc++.1.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D74A1A21EF2BBD400066FBA /* libc++.1.tbd */; };
+		0D74A1A71EF2BBD400066FBA /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D74A1A31EF2BBD400066FBA /* libc++.tbd */; };
+		0D74A1A81EF2BBD400066FBA /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D74A1A41EF2BBD400066FBA /* libc++abi.tbd */; };
+		0D74A1A91EF2BBD400066FBA /* libc.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D74A1A51EF2BBD400066FBA /* libc.tbd */; };
+		0D74A1AC1EF2C28800066FBA /* AlgGraph.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D74A1AB1EF2C28800066FBA /* AlgGraph.m */; };
+		0D74A1AF1EF2C2F000066FBA /* GraphTest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D74A1AE1EF2C2F000066FBA /* GraphTest.m */; };
+		0D74A1B21EF2D69200066FBA /* SortCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D74A1B01EF2D69200066FBA /* SortCommon.cpp */; };
 		D5098A941EE063FE002644CA /* AlgString.m in Sources */ = {isa = PBXBuildFile; fileRef = D5098A931EE063FD002644CA /* AlgString.m */; };
 		D5274AD41EEECE1700BC5AFE /* InternalSortingP73.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5274AD21EEECE1700BC5AFE /* InternalSortingP73.cpp */; };
 		D55B5D021ED9888200008F53 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D55B5D011ED9888200008F53 /* main.m */; };
@@ -15,7 +22,6 @@
 		D55B5D0B1ED9888200008F53 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D55B5D091ED9888200008F53 /* Main.storyboard */; };
 		D55B5D0D1ED9888200008F53 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D55B5D0C1ED9888200008F53 /* Images.xcassets */; };
 		D55B5D101ED9888200008F53 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D55B5D0E1ED9888200008F53 /* LaunchScreen.xib */; };
-		D55B5D2D1ED9CC5E00008F53 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D55B5D2C1ED9CC5E00008F53 /* README.md */; };
 		D56B208C1EE55C0E00D6EA3B /* AlgCount.m in Sources */ = {isa = PBXBuildFile; fileRef = D56B208B1EE55C0E00D6EA3B /* AlgCount.m */; };
 		D56B208F1EE55C7D00D6EA3B /* AlgPath.m in Sources */ = {isa = PBXBuildFile; fileRef = D56B208E1EE55C7D00D6EA3B /* AlgPath.m */; };
 		D56B20921EE55D0D00D6EA3B /* AlgStack.m in Sources */ = {isa = PBXBuildFile; fileRef = D56B20911EE55D0D00D6EA3B /* AlgStack.m */; };
@@ -24,8 +30,6 @@
 		D5B9D0F71EEBAFD9005704A7 /* PathTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B9D0F61EEBAFD9005704A7 /* PathTest.m */; };
 		D5B9D0FA1EEBB120005704A7 /* StringTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B9D0F91EEBB120005704A7 /* StringTest.m */; };
 		D5B9D0FD1EEBB1D7005704A7 /* StackTest.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B9D0FC1EEBB1D7005704A7 /* StackTest.m */; };
-		D5B9D1021EEBC10F005704A7 /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B9D1011EEBC10E005704A7 /* libstdc++.dylib */; };
-		D5B9D1041EEBC250005704A7 /* libstdc++.6.0.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B9D1031EEBC24F005704A7 /* libstdc++.6.0.9.dylib */; };
 		D5B9D1091EEBC598005704A7 /* AlgTree.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5B9D1081EEBC598005704A7 /* AlgTree.cpp */; };
 		D5B9D1111EED6124005704A7 /* ARed4Blue4.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B9D10C1EED6124005704A7 /* ARed4Blue4.m */; };
 		D5B9D1131EED6124005704A7 /* Recursion.m in Sources */ = {isa = PBXBuildFile; fileRef = D5B9D1101EED6124005704A7 /* Recursion.m */; };
@@ -42,6 +46,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0D74A1A21EF2BBD400066FBA /* libc++.1.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.1.tbd"; path = "usr/lib/libc++.1.tbd"; sourceTree = SDKROOT; };
+		0D74A1A31EF2BBD400066FBA /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		0D74A1A41EF2BBD400066FBA /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
+		0D74A1A51EF2BBD400066FBA /* libc.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libc.tbd; path = usr/lib/libc.tbd; sourceTree = SDKROOT; };
+		0D74A1AA1EF2C28800066FBA /* AlgGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlgGraph.h; sourceTree = "<group>"; };
+		0D74A1AB1EF2C28800066FBA /* AlgGraph.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlgGraph.m; sourceTree = "<group>"; };
+		0D74A1AD1EF2C2F000066FBA /* GraphTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphTest.h; sourceTree = "<group>"; };
+		0D74A1AE1EF2C2F000066FBA /* GraphTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphTest.m; sourceTree = "<group>"; };
+		0D74A1B01EF2D69200066FBA /* SortCommon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SortCommon.cpp; sourceTree = "<group>"; };
+		0D74A1B11EF2D69200066FBA /* SortCommon.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = SortCommon.hpp; sourceTree = "<group>"; };
 		D5098A921EE063FD002644CA /* AlgString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlgString.h; sourceTree = "<group>"; };
 		D5098A931EE063FD002644CA /* AlgString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlgString.m; sourceTree = "<group>"; };
 		D5274AD11EEEC85900BC5AFE /* readme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = readme.h; sourceTree = "<group>"; };
@@ -59,7 +73,6 @@
 		D55B5D0F1ED9888200008F53 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D55B5D151ED9888200008F53 /* AlgorithmsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlgorithmsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D55B5D1A1ED9888200008F53 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D55B5D2C1ED9CC5E00008F53 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		D56B208A1EE55C0E00D6EA3B /* AlgCount.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlgCount.h; sourceTree = "<group>"; };
 		D56B208B1EE55C0E00D6EA3B /* AlgCount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlgCount.m; sourceTree = "<group>"; };
 		D56B208D1EE55C7D00D6EA3B /* AlgPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlgPath.h; sourceTree = "<group>"; };
@@ -76,8 +89,6 @@
 		D5B9D0F91EEBB120005704A7 /* StringTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringTest.m; sourceTree = "<group>"; };
 		D5B9D0FB1EEBB1D7005704A7 /* StackTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StackTest.h; sourceTree = "<group>"; };
 		D5B9D0FC1EEBB1D7005704A7 /* StackTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackTest.m; sourceTree = "<group>"; };
-		D5B9D1011EEBC10E005704A7 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
-		D5B9D1031EEBC24F005704A7 /* libstdc++.6.0.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.0.9.dylib"; path = "usr/lib/libstdc++.6.0.9.dylib"; sourceTree = SDKROOT; };
 		D5B9D1081EEBC598005704A7 /* AlgTree.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AlgTree.cpp; sourceTree = "<group>"; };
 		D5B9D10A1EEBC5EC005704A7 /* AlgTree.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AlgTree.h; sourceTree = "<group>"; };
 		D5B9D10B1EED6124005704A7 /* ARed4Blue4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ARed4Blue4.h; sourceTree = "<group>"; };
@@ -91,6 +102,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D74A1A61EF2BBD400066FBA /* libc++.1.tbd in Frameworks */,
+				0D74A1A71EF2BBD400066FBA /* libc++.tbd in Frameworks */,
+				0D74A1A81EF2BBD400066FBA /* libc++abi.tbd in Frameworks */,
+				0D74A1A91EF2BBD400066FBA /* libc.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,20 +113,31 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D5B9D1041EEBC250005704A7 /* libstdc++.6.0.9.dylib in Frameworks */,
-				D5B9D1021EEBC10F005704A7 /* libstdc++.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D74A1A11EF2BBD300066FBA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0D74A1A21EF2BBD400066FBA /* libc++.1.tbd */,
+				0D74A1A31EF2BBD400066FBA /* libc++.tbd */,
+				0D74A1A41EF2BBD400066FBA /* libc++abi.tbd */,
+				0D74A1A51EF2BBD400066FBA /* libc.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D5274AD01EEEC82700BC5AFE /* Sorting */ = {
 			isa = PBXGroup;
 			children = (
 				D5274AD11EEEC85900BC5AFE /* readme.h */,
 				D5274AD21EEECE1700BC5AFE /* InternalSortingP73.cpp */,
 				D5274AD31EEECE1700BC5AFE /* InternalSortingP73.h */,
+				0D74A1B01EF2D69200066FBA /* SortCommon.cpp */,
+				0D74A1B11EF2D69200066FBA /* SortCommon.hpp */,
 			);
 			name = Sorting;
 			path = ../../Sorting;
@@ -120,12 +146,10 @@
 		D55B5CF31ED9888100008F53 = {
 			isa = PBXGroup;
 			children = (
-				D5B9D1031EEBC24F005704A7 /* libstdc++.6.0.9.dylib */,
-				D5B9D1011EEBC10E005704A7 /* libstdc++.dylib */,
-				D55B5D2C1ED9CC5E00008F53 /* README.md */,
 				D55B5CFE1ED9888100008F53 /* Algorithms */,
 				D55B5D181ED9888200008F53 /* AlgorithmsTests */,
 				D55B5CFD1ED9888100008F53 /* Products */,
+				0D74A1A11EF2BBD300066FBA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -176,6 +200,8 @@
 				D5B9D0F91EEBB120005704A7 /* StringTest.m */,
 				D5B9D0FB1EEBB1D7005704A7 /* StackTest.h */,
 				D5B9D0FC1EEBB1D7005704A7 /* StackTest.m */,
+				0D74A1AD1EF2C2F000066FBA /* GraphTest.h */,
+				0D74A1AE1EF2C2F000066FBA /* GraphTest.m */,
 			);
 			path = AlgorithmsTests;
 			sourceTree = "<group>";
@@ -207,6 +233,8 @@
 				D5B9D0EB1EE8F75A005704A7 /* AlgMatrix.m */,
 				D5B9D10A1EEBC5EC005704A7 /* AlgTree.h */,
 				D5B9D1081EEBC598005704A7 /* AlgTree.cpp */,
+				0D74A1AA1EF2C28800066FBA /* AlgGraph.h */,
+				0D74A1AB1EF2C28800066FBA /* AlgGraph.m */,
 			);
 			name = Problems;
 			path = ../../Problems;
@@ -256,7 +284,7 @@
 		D55B5CF41ED9888100008F53 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0620;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = dudu;
 				TargetAttributes = {
 					D55B5CFB1ED9888100008F53 = {
@@ -313,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D56B208F1EE55C7D00D6EA3B /* AlgPath.m in Sources */,
+				0D74A1AC1EF2C28800066FBA /* AlgGraph.m in Sources */,
 				D56B208C1EE55C0E00D6EA3B /* AlgCount.m in Sources */,
 				D5274AD41EEECE1700BC5AFE /* InternalSortingP73.cpp in Sources */,
 				D5098A941EE063FE002644CA /* AlgString.m in Sources */,
@@ -320,8 +349,8 @@
 				D55B5D081ED9888200008F53 /* ViewController.mm in Sources */,
 				D56B20921EE55D0D00D6EA3B /* AlgStack.m in Sources */,
 				D5B9D1131EED6124005704A7 /* Recursion.m in Sources */,
-				D55B5D2D1ED9CC5E00008F53 /* README.md in Sources */,
 				D5B9D1091EEBC598005704A7 /* AlgTree.cpp in Sources */,
+				0D74A1B21EF2D69200066FBA /* SortCommon.cpp in Sources */,
 				D55B5D051ED9888200008F53 /* AppDelegate.m in Sources */,
 				D55B5D021ED9888200008F53 /* main.m in Sources */,
 				D5B9D1111EED6124005704A7 /* ARed4Blue4.m in Sources */,
@@ -336,6 +365,7 @@
 				D5B9D0F71EEBAFD9005704A7 /* PathTest.m in Sources */,
 				D5B9D0F21EEBA940005704A7 /* CountTest.m in Sources */,
 				D5B9D0FA1EEBB120005704A7 /* StringTest.m in Sources */,
+				0D74A1AF1EF2C2F000066FBA /* GraphTest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,15 +412,19 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -423,8 +457,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -432,6 +468,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -451,6 +488,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Algorithms/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "dudu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -461,6 +499,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = Algorithms/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "dudu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -480,6 +519,7 @@
 				);
 				INFOPLIST_FILE = AlgorithmsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "dudu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Algorithms.app/Algorithms";
 			};
@@ -496,6 +536,7 @@
 				);
 				INFOPLIST_FILE = AlgorithmsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "dudu.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Algorithms.app/Algorithms";
 			};
