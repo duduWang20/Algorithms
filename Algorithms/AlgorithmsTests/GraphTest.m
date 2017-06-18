@@ -42,16 +42,18 @@
 
 void testShortestInPlane(){
 //    planeNodesGenerate(100);
-    planeNodesGenerate(1000);
-    planeNodesGenerate(2000);
+//    planeNodesGenerate(1000);
+//    planeNodesGenerate(2000);
 }
 
 
 void testShortestInCube(){
+    
+    cubeNodesGenerate(100);
     cubeNodesGenerate(2000);
-//    cubeNodesGenerate(1000);
-    cubeNodesGenerate(2000);
-    cubeNodesGenerate(5000);
+    cubeNodesGenerate(900000);
+
+    
 }
 
 @end

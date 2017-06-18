@@ -87,7 +87,7 @@ static inline float bestDistance(const struct PlaneNode * node1, const struct Pl
 }
 
 
-void shortestDistanceOfTwoNodesInPlane(struct PlaneNode *planeNoades, unsigned int nodeCount){
+struct PlaneNode * shortestDistanceOfTwoNodesInPlane(struct PlaneNode *planeNoades, unsigned int nodeCount){
     
     
     struct SortNode * sortedX = malloc(nodeCount * sizeof(struct SortNode));
@@ -164,41 +164,24 @@ void shortestDistanceOfTwoNodesInPlane(struct PlaneNode *planeNoades, unsigned i
     }
     
     
-    for (int i = 0; i < nodeCount-1; i++) {
-        
-        struct PlaneNode* cubeNode1 = sortedX[i].node;
-        struct PlaneNode* best = cubeNode1->bestNode;
-        
-        float bestdistance = bestDistance(cubeNode1, best);
-        
-        for (int j = i+1; j < nodeCount; j++) {
-            
-            struct PlaneNode* cubeNode2 = sortedX[j].node;
-            float distance = bestDistance(cubeNode1, cubeNode2);
-            
-            if (distance < bestdistance) {
-                printf("\n===========\n");
-            }
-            
-        }
-    }
-
+    struct PlaneNode * result = & planeNoades[0];
+    float bestDis = bestDistance(result, result->bestNode);
     
-    int i = 0;
-    for (; i < nodeCount-1; i++) {
-        printf("\n===========\n");
-        struct PlaneNode* node = &planeNoades[i];
-        if (node->bestNode != NULL) {
-            printf("x1=%d, x2=%d ,y1=%d ,y2=%d ,  distance = %f\n",
-                   node->vx,
-                   node->bestNode->vx,
-                   node->vy,
-                   node->bestNode->vy, bestDistance( node,  node->bestNode));
-        }else{
-            printf("x1=%d, x2=%d  end of \n",  node->vx, node->vy);
+    int i = 1;
+    for (; i < nodeCount; i++) {
+        struct PlaneNode * node = & planeNoades[i];
+        if (node->bestNode == NULL) {
+            continue;
         }
-        printf("\n===========\n");
+        float distance = bestDistance(node, node->bestNode);
+        if (distance < bestDis) {
+            bestDis = distance;
+            result = node;
+        }
     }
+    
+    
+    return result;
     
     
 }
@@ -224,7 +207,17 @@ void planeNodesGenerate(int count){
         lnode->positionY = -1;
     }
     
-    shortestDistanceOfTwoNodesInPlane(node, count);
+    
+    struct PlaneNode * result = shortestDistanceOfTwoNodesInPlane(node, count);
+    printf("\n============ Nearest distance for plane Nodes =========== \n\n");
+    printf("(%d,%d) (%d,%d), distance = %f\n",
+           result->vx,result->vy,
+           result->bestNode->vx,result->bestNode->vy,
+           bestDistance(result,result->bestNode));
+    printf("\n------------------------------------------------\n");
+    
+
+    
     free(node);
     
 }
@@ -338,7 +331,7 @@ static inline float bestDistance4Cube(const struct CubeNode * node1, const struc
 }
 
 
-void shortestDistanceOfTwoNodesInCube(struct CubeNode cubeNodes[], unsigned int nodeCount){
+struct CubeNode * shortestDistanceOfTwoNodesInCube(struct CubeNode cubeNodes[], unsigned int nodeCount){
     
     struct SortNode * sortedY = malloc(nodeCount * sizeof(struct SortNode));
     sortAccordingY4Cube(cubeNodes, sortedY, nodeCount);
@@ -419,43 +412,24 @@ void shortestDistanceOfTwoNodesInCube(struct CubeNode cubeNodes[], unsigned int 
         }
     }
     
-
-    for (int i = 0; i < nodeCount-1; i++) {
-        
-        struct CubeNode* cubeNode1 = sortedX[i].node;
-        struct CubeNode* best = cubeNode1->bestNode;
-        float bestdistance = bestDistance4Cube(cubeNode1, best);
-        
-        for (int j = i+1; j < nodeCount; j++) {
-            
-            struct CubeNode* cubeNode2 = sortedX[j].node;
-            float distance = bestDistance4Cube(cubeNode1, cubeNode2);
-
-            if (distance < bestdistance) {
-                printf("\n===========\n");
-            }
+    struct CubeNode * result = & cubeNodes[0];
+    float bestDis = bestDistance4Cube(result, result->bestNode);
+    
+    int i = 1;
+    for (; i < nodeCount; i++) {
+        struct CubeNode * node = & cubeNodes[i];
+        if (node->bestNode == NULL) {
+            continue;
+        }
+        float distance = bestDistance4Cube(node, node->bestNode);
+        if (distance < bestDis) {
+            bestDis = distance;
+            result = node;
         }
     }
     
-//    int i = 0;
-//    for (; i < nodeCount-1; i++) {
-//        printf("\n===========\n");
-//        struct CubeNode* node = & cubeNodes[i];
-//        if (node->bestNode != NULL) {
-//            printf("x1=%d, x2=%d ,y1=%d ,y2=%d,z1=%d ,z2=%d , distance = %f\n",
-//                   node->vx,
-//                   node->bestNode->vx,
-//                   node->vy,
-//                   node->bestNode->vy,
-//                   node->vz,
-//                   node->bestNode->vz,
-//                   bestDistance4Cube( node,  node->bestNode));
-//        }else{
-//            printf("x1=%d, x2=%d  end of \n",  node->vx, node->vy);
-//        }
-//        printf("\n===========\n");
-//    }
 
+    return result;
 }
 
 void cubeNodesGenerate(int count){
@@ -465,9 +439,9 @@ void cubeNodesGenerate(int count){
     for (int i = 0; i < count; i++) {
         struct CubeNode *lnode = &node[i];
         
-        lnode->vx = uniform_int(1, 1000);
-        lnode->vy = uniform_int(1, 1000);
-        lnode->vz = uniform_int(1, 1000);
+        lnode->vx = uniform_int(1, 1000000);
+        lnode->vy = uniform_int(1, 100000);
+        lnode->vz = uniform_int(1, 10000000);
         
         lnode->bestNode = NULL;
         
@@ -476,7 +450,14 @@ void cubeNodesGenerate(int count){
         lnode->positionZ = -1;
     }
     
-    shortestDistanceOfTwoNodesInCube(node, count);
+    struct CubeNode * result = shortestDistanceOfTwoNodesInCube(node, count);
+    printf("\n============ Nearest distance for cube Nodes =========== \n\n");
+    printf("(%d,%d,%d) (%d,%d,%d), distance = %f\n",
+           result->vx,result->vy,result->vz,
+           result->bestNode->vx,result->bestNode->vy,result->bestNode->vz,
+           bestDistance4Cube(result,result->bestNode));
+    printf("\n----------------------------------------------\n");
+
     
     free(node);
 }

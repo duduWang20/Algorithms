@@ -43,13 +43,13 @@ struct CubeNode{
 /*
  2维 空间中情况
  */
-void shortestDistanceOfTwoNodesInPlane(struct PlaneNode planeNoades[], unsigned int nodeCount);
+struct PlaneNode * shortestDistanceOfTwoNodesInPlane(struct PlaneNode planeNoades[], unsigned int nodeCount);
 void planeNodesGenerate(int count);
 
 /*
  3维 空间中情况
  */
-void shortestDistanceOfTwoNodesInCube(struct CubeNode planeNodes[], unsigned int nodeCount);
+struct CubeNode * shortestDistanceOfTwoNodesInCube(struct CubeNode planeNodes[], unsigned int nodeCount);
 void cubeNodesGenerate(int count);
 
 
