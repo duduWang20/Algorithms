@@ -233,6 +233,40 @@ void planeNodesGenerate(int count){
 /////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////
 
+static inline int compare4CubeNodeOnZ(const void * node1, const void *node2){
+    struct SortNode * sort1 = (struct SortNode *)node1;
+    struct SortNode * sort2 = (struct SortNode *)node2;
+    
+    struct CubeNode * plane1 = sort1->node;
+    struct CubeNode * plane2 = sort2->node;
+    
+    int dlt = plane1->vz - plane2->vz;
+    
+    return dlt;
+}
+static inline int compare4CubeNodeOnY(const void * node1, const void *node2){
+    struct SortNode * sort1 = (struct SortNode *)node1;
+    struct SortNode * sort2 = (struct SortNode *)node2;
+    
+    struct CubeNode * plane1 = sort1->node;
+    struct CubeNode * plane2 = sort2->node;
+    
+    int dlt = plane1->vy - plane2->vy;
+    
+    return dlt;
+}
+static inline int compare4CubeNodeOnX(const void * node1, const void *node2){
+    struct SortNode * sort1 = (struct SortNode *)node1;
+    struct SortNode * sort2 = (struct SortNode *)node2;
+    
+    struct CubeNode * plane1 = sort1->node;
+    struct CubeNode * plane2 = sort2->node;
+    
+    int dlt = plane1->vx - plane2->vx;
+    
+    return dlt;
+}
+
 static inline void sortAccordingY4Cube(struct CubeNode *cubeNodes, struct SortNode *sortedY, unsigned int nodeCount){
     struct CubeNode * cubeNode = NULL;
     int i = 0;
@@ -242,7 +276,7 @@ static inline void sortAccordingY4Cube(struct CubeNode *cubeNodes, struct SortNo
     for (; i < nodeCount; i++) {
         sortedY[i].node = &cubeNodes[i];
     }
-    qsort(sortedY, nodeCount, sizeof(struct SortNode), compare4PlaneNodeOnY);
+    qsort(sortedY, nodeCount, sizeof(struct SortNode), compare4CubeNodeOnY);
     i = 0;
     for (; i < nodeCount-1; i++) {
         sortedY[i].position = i;
@@ -256,18 +290,17 @@ static inline void sortAccordingY4Cube(struct CubeNode *cubeNodes, struct SortNo
 }
 static inline void sortAccordingX4Cube(struct CubeNode *cubeNodes, struct SortNode *sortedX, unsigned int nodeCount){
     struct CubeNode * cubeNode = NULL;
-    int i = 0;
     
     memset(sortedX, 0, sizeof(struct SortNode) * nodeCount);
+    int i = 0;
     for (;i < nodeCount; i++) {
         sortedX[i].node = &cubeNodes[i];
     }
-    qsort(sortedX, nodeCount, sizeof(struct SortNode), compare4PlaneNodeOnX);
+    qsort(sortedX, nodeCount, sizeof(struct SortNode), compare4CubeNodeOnX);
+    
     i = 0;
     for (; i < nodeCount-1; i++) {
-        
         sortedX[i].position = i;
-        
         cubeNode = sortedX[i].node;
         cubeNode->positionX = i;
     };
@@ -283,7 +316,7 @@ static inline void sortAccordingZ4Cube(struct CubeNode *cubeNodes, struct SortNo
     for (;i < nodeCount; i++) {
         sortedX[i].node = &cubeNodes[i];
     }
-    qsort(sortedX, nodeCount, sizeof(struct SortNode), compare4PlaneNodeOnX);
+    qsort(sortedX, nodeCount, sizeof(struct SortNode), compare4CubeNodeOnZ);
     i = 0;
     for (; i < nodeCount-1; i++) {
         
@@ -307,12 +340,15 @@ static inline float bestDistance4Cube(const struct CubeNode * node1, const struc
 
 void shortestDistanceOfTwoNodesInCube(struct CubeNode cubeNodes[], unsigned int nodeCount){
     
-    struct SortNode * sortedX = malloc(nodeCount * sizeof(struct SortNode));
-    sortAccordingX4Cube(cubeNodes, sortedX, nodeCount);
     struct SortNode * sortedY = malloc(nodeCount * sizeof(struct SortNode));
     sortAccordingY4Cube(cubeNodes, sortedY, nodeCount);
+    
     struct SortNode * sortedZ = malloc(nodeCount * sizeof(struct SortNode));
     sortAccordingZ4Cube(cubeNodes, sortedZ, nodeCount);
+    
+    struct SortNode * sortedX = malloc(nodeCount * sizeof(struct SortNode));
+    sortAccordingX4Cube(cubeNodes, sortedX, nodeCount);
+    
     
     struct CubeNode * xHead = (struct CubeNode *) (sortedX[0].node);
     struct CubeNode * xNext = (struct CubeNode *) (sortedX[1].node);
@@ -324,6 +360,7 @@ void shortestDistanceOfTwoNodesInCube(struct CubeNode cubeNodes[], unsigned int 
         
         /////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////
+        
         //move xHEXT that   xHead->vx != xNext->vx
         xNext = (struct CubeNode *) (sortedX[xHeadIndex+1].node);
         int xNextIndex = xHeadIndex + 1;
@@ -353,9 +390,9 @@ void shortestDistanceOfTwoNodesInCube(struct CubeNode cubeNodes[], unsigned int 
         /////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////
         //compute the best for every node
-        
-        int indexBest = xNextIndex + 1;
+        int indexBest = xHeadIndex + 2;
         float distanceX = ABS(xHead->vx - xNext->vx);
+        
         
         while ( distanceX < distacneBest && indexBest < nodeCount) {
             struct CubeNode * node = (struct CubeNode *) (sortedX[indexBest].node);
@@ -380,7 +417,6 @@ void shortestDistanceOfTwoNodesInCube(struct CubeNode cubeNodes[], unsigned int 
             distacneBest = bestDistance4Cube(xHead, xNext);
             xHead->bestNode = xNext;
         }
-        
     }
     
 
@@ -391,6 +427,7 @@ void shortestDistanceOfTwoNodesInCube(struct CubeNode cubeNodes[], unsigned int 
         float bestdistance = bestDistance4Cube(cubeNode1, best);
         
         for (int j = i+1; j < nodeCount; j++) {
+            
             struct CubeNode* cubeNode2 = sortedX[j].node;
             float distance = bestDistance4Cube(cubeNode1, cubeNode2);
 
