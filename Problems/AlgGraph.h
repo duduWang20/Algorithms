@@ -53,6 +53,11 @@ struct CubeNode * shortestDistanceOfTwoNodesInCube(struct CubeNode planeNodes[],
 void cubeNodesGenerate(int count);
 
 
+/***********************************************************
+ Dijkstra
+ ***********************************************************/
+
+
 
 @end
 

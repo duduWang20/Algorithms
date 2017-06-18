@@ -93,9 +93,9 @@ struct PlaneNode * shortestDistanceOfTwoNodesInPlane(struct PlaneNode *planeNoad
     struct SortNode * sortedX = malloc(nodeCount * sizeof(struct SortNode));
     sortAccordingX(planeNoades, sortedX, nodeCount);
     
-    struct SortNode * sortedY = malloc(nodeCount * sizeof(struct SortNode));
-    sortAccordingY(planeNoades, sortedY, nodeCount);
-    
+//    struct SortNode * sortedY = malloc(nodeCount * sizeof(struct SortNode));
+//    sortAccordingY(planeNoades, sortedY, nodeCount);
+//    
     
     struct PlaneNode * xHead = (struct PlaneNode *) (sortedX[0].node);
     struct PlaneNode * xNext = (struct PlaneNode *) (sortedX[1].node);
@@ -333,11 +333,11 @@ static inline float bestDistance4Cube(const struct CubeNode * node1, const struc
 
 struct CubeNode * shortestDistanceOfTwoNodesInCube(struct CubeNode cubeNodes[], unsigned int nodeCount){
     
-    struct SortNode * sortedY = malloc(nodeCount * sizeof(struct SortNode));
-    sortAccordingY4Cube(cubeNodes, sortedY, nodeCount);
-    
-    struct SortNode * sortedZ = malloc(nodeCount * sizeof(struct SortNode));
-    sortAccordingZ4Cube(cubeNodes, sortedZ, nodeCount);
+//    struct SortNode * sortedY = malloc(nodeCount * sizeof(struct SortNode));
+//    sortAccordingY4Cube(cubeNodes, sortedY, nodeCount);
+//    
+//    struct SortNode * sortedZ = malloc(nodeCount * sizeof(struct SortNode));
+//    sortAccordingZ4Cube(cubeNodes, sortedZ, nodeCount);
     
     struct SortNode * sortedX = malloc(nodeCount * sizeof(struct SortNode));
     sortAccordingX4Cube(cubeNodes, sortedX, nodeCount);
@@ -427,7 +427,6 @@ struct CubeNode * shortestDistanceOfTwoNodesInCube(struct CubeNode cubeNodes[], 
             result = node;
         }
     }
-    
 
     return result;
 }
