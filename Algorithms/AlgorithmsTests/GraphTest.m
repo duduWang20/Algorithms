@@ -27,6 +27,8 @@
     // This is an example of a functional test case.
     
     testShortestInPlane();
+    
+    testShortestInCube();
 }
 
 - (void)testPerformanceExample {
@@ -39,16 +41,17 @@
 ////////////////////////////////////////////////////////////////////////
 
 void testShortestInPlane(){
-    planeNodesGenerate(100);
+//    planeNodesGenerate(100);
     planeNodesGenerate(1000);
     planeNodesGenerate(2000);
 }
 
 
 void testShortestInCube(){
-    planeNodesGenerate(100);
-    planeNodesGenerate(1000);
-    planeNodesGenerate(2000);
+    cubeNodesGenerate(2000);
+//    cubeNodesGenerate(1000);
+    cubeNodesGenerate(2000);
+    cubeNodesGenerate(5000);
 }
 
 @end

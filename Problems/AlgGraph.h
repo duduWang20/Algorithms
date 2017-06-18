@@ -20,6 +20,18 @@ struct PlaneNode{
     int vy;         //平面坐标y的值
 };
 
+struct CubeNode{
+    struct CubeNode * bestNode;    //init = null
+    
+    int positionX;//x坐标排序位置  {0,n-1}
+    int positionY;//y坐标排序位置  {0,n-1}
+    int positionZ;//y坐标排序位置  {0,n-1}
+    
+    int vx;         //平面坐标x的值
+    int vy;         //平面坐标y的值
+    int vz;         //平面坐标y的值
+};
+
 
 @interface AlgGraph : NSObject
 
@@ -37,7 +49,7 @@ void planeNodesGenerate(int count);
 /*
  3维 空间中情况
  */
-void shortestDistanceOfTwoNodesInCube(struct PlaneNode planeNoades[], unsigned int nodeCount);
+void shortestDistanceOfTwoNodesInCube(struct CubeNode planeNodes[], unsigned int nodeCount);
 void cubeNodesGenerate(int count);
 
 
