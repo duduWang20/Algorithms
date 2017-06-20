@@ -24,7 +24,7 @@ struct CellularStructure{
  31.华为面试题（搜索）：
  一类似于蜂窝的结构的图，进行搜索最短路径（要求5分钟）
  */
-void shortestPathsForCellularStructure(struct CellularStructure * fromCelluar, struct CellularStructure * toCelluar);
+//void shortestPathsForCellularStructure(struct CellularStructure * fromCelluar, struct CellularStructure * toCelluar);
 
 
 /*

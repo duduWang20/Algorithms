@@ -153,7 +153,8 @@ unsigned int * shortestPathsForColorNumber(unsigned int path[],
         return nil;
     }else{
         unsigned int * pathOut = malloc( (*outPathLength) * sizeof(unsigned int));
-        memset(pathOut, 0,  (*outPathLength)* sizeof(unsigned int)); //malloc,calloc,realloc类似.但是注意一个重要的区别,_alloca
+        memset(pathOut, 0,  (*outPathLength)* sizeof(unsigned int));
+        //malloc,calloc,realloc类似.但是注意一个重要的区别,_alloca
         for (int i = 0; i < *outPathLength; i++) {
             int index = (bestLow + i) % pathLength;
             pathOut[i] = path[index];

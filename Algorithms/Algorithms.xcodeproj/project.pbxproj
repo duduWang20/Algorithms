@@ -16,6 +16,7 @@
 		0D74A1B21EF2D69200066FBA /* SortCommon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0D74A1B01EF2D69200066FBA /* SortCommon.cpp */; };
 		0DF7A70A1EF75DC700471EDC /* AlgHeap.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7A7091EF75DC700471EDC /* AlgHeap.m */; };
 		0DF7A70D1EF7680000471EDC /* AlgHash.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DF7A70C1EF7680000471EDC /* AlgHash.m */; };
+		0DF7A7E01EF9403900471EDC /* Translating in Resources */ = {isa = PBXBuildFile; fileRef = 0DF7A7DF1EF9403900471EDC /* Translating */; };
 		D5098A941EE063FE002644CA /* AlgString.m in Sources */ = {isa = PBXBuildFile; fileRef = D5098A931EE063FD002644CA /* AlgString.m */; };
 		D5274AD41EEECE1700BC5AFE /* InternalSortingP73.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D5274AD21EEECE1700BC5AFE /* InternalSortingP73.cpp */; };
 		D55B5D021ED9888200008F53 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D55B5D011ED9888200008F53 /* main.m */; };
@@ -62,6 +63,7 @@
 		0DF7A7091EF75DC700471EDC /* AlgHeap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlgHeap.m; sourceTree = "<group>"; };
 		0DF7A70B1EF7680000471EDC /* AlgHash.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlgHash.h; sourceTree = "<group>"; };
 		0DF7A70C1EF7680000471EDC /* AlgHash.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlgHash.m; sourceTree = "<group>"; };
+		0DF7A7DF1EF9403900471EDC /* Translating */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Translating; sourceTree = "<group>"; };
 		D5098A921EE063FD002644CA /* AlgString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlgString.h; sourceTree = "<group>"; };
 		D5098A931EE063FD002644CA /* AlgString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlgString.m; sourceTree = "<group>"; };
 		D5274AD11EEEC85900BC5AFE /* readme.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = readme.h; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 		D55B5CFE1ED9888100008F53 /* Algorithms */ = {
 			isa = PBXGroup;
 			children = (
+				0DF7A7DF1EF9403900471EDC /* Translating */,
 				D5274AD01EEEC82700BC5AFE /* Sorting */,
 				D55B5D281ED9CC4500008F53 /* Problems */,
 				D55B5D031ED9888200008F53 /* AppDelegate.h */,
@@ -332,6 +335,7 @@
 			files = (
 				D55B5D0B1ED9888200008F53 /* Main.storyboard in Resources */,
 				D55B5D101ED9888200008F53 /* LaunchScreen.xib in Resources */,
+				0DF7A7E01EF9403900471EDC /* Translating in Resources */,
 				D55B5D0D1ED9888200008F53 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

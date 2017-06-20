@@ -8,10 +8,10 @@
 @implementation AlgPath
 
 
-void shortestPathsForCellularStructure(struct CellularStructure * fromCelluar, struct CellularStructure * toCelluar){
-    
-    
-}
+//void shortestPathsForCellularStructure(struct CellularStructure * fromCelluar, struct CellularStructure * toCelluar){
+//    
+//    
+//}
 
 
 /////////////////////////////////////////////////////////////////
