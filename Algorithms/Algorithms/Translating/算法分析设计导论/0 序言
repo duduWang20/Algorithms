@@ -1,0 +1,69 @@
+
+
+序言
+
+
+    The most valuable acquisitions in a scientific or technical education are
+    the general-purpose mental tools which remain serviceable for a life-time.
+    在科学与技术教育中，最有价值的收获是通用的思想工具，它将使你终身受益。
+            —George Forsythe, “What to do till the computer scientist comes.” (1968)
+
+
+
+Algorithms play the central role both in the science and practice of computing.
+Recognition of this fact has led to the appearance of a considerable number of textbooks on the subject.
+By and large, they follow one of two alternatives in presenting algorithms.
+    算法在计算科学与实践中都起到了核心作用。
+    对该事实的认知，导致了针对该主题的大量书籍的出现。
+    总体的来说，这些书籍以两种两种方式中的一种来表现算法。
+One classifies algorithms according to a problem type.
+Such a book would have separate chapters on algorithms for sorting, searching, graphs, and so on.
+The advantage of this approach is that it allows an immediate comparison of, say,the efficiency of different algorithms for the same problem.
+The drawback of this approach is that it emphasizes problem types at the expense of algorithm design techniques.
+    根据问题类型对算法进行分类：这类书籍将会出现排序，搜索，图等的独立章节。
+    这种分类方法的好处是：对相同的问题，可以对不同算法的效率进行直观的比较。
+    其弊端是：它以算法设计技术的代价来强调问题类型。
+
+
+The second alternative organizes the presentation around algorithm design techniques.
+In this organization, algorithms from different areas of computing are grouped together if they have the same design approach.
+I share the belief of many (e.g., [BaY95]) that this organization is more appropriate for a basic course on the design and analysis of algorithms.
+    第二种分类方式，以算法设计技术为中心，来组织书籍的结构。
+    在这种组织中，来自不同计算领域的算法可以被组织到一起，如果它们使用相同的设计技术。
+    我赞同很多人的观点 (e.g., [BaY95])：这种组织方式对算法分析与设计基础课程更为适当。
+    There are three principal reasons for emphasis on algorithm design techniques.
+    First, these techniques provide a student with tools for designing algorithms for new problems.
+This makes learning algorithm design techniques a very valuable endeavor from a practical standpoint.
+    Second, they seek to classify multitudes of known algorithms according to an underlying design idea.
+Learning to see such commonality among algorithms from different application areas should be a major goal of computer science education.
+After all, every science considers classification of its principal subject as a major if not the central point of its discipline.
+    Third, in my opinion, algorithm design techniques have utility as general problem solving strategies, applicable to problems beyond computing.
+    强调算法设计技术有三个主要原因：
+    第一，在为新问题设计算法时，这些技术给学生提供工具。从实践的角度来说，这使学习算法设计技术成为一个非常有价值的努力；
+    第二，这些算法设计技术，根据潜在的设计理念，试图分类多个已知算法。学习观察来自不同应用领域的算法的共性，应该是计算机科学教育的一个主要目标。
+        毕竟，每一门科学都会考虑，将其非核心学科的主要科目的分类作为一个专业。
+    第三，在我看来，作为通用问题解决策略可以应用于计算以外的问题，算法设计技术具有实用价值。
+
+Unfortunately, the traditional classification of algorithm design techniques has several serious shortcomings, from both theoretical and educational points of view. The most significant of these shortcomings is the failure to classify many important algorithms. This limitation has forced the authors of other textbooks to depart from the design technique organization and to include chapters dealing with specific problem types. Such a switch leads to a loss of course coherence and almost unavoidably creates a confusion in students’ minds.
+    很不幸，传统的算法设计技术的分类有几个严重的缺点。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
