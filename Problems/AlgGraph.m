@@ -114,23 +114,26 @@ struct PlaneNode * shortestDistanceOfTwoNodesInPlane(struct PlaneNode *planeNoad
                 break;
             }
             xNextIndex++;
-            struct PlaneNode * xzeroNode = (struct PlaneNode *) (sortedX[xNextIndex].node);
-            float ldistance = bestDistance(xHead, xzeroNode);
-            xNext = xzeroNode;
+            if (xNextIndex+1 >= nodeCount) {
+                goto RESET;
+            }
+            struct PlaneNode * lnode = (struct PlaneNode *) (sortedX[xNextIndex].node);
+
+            float ldistance = 0;
+            if (xHead->vx != lnode->vx) {
+                ldistance = bestDistance(xHead, lnode);
+            }else{
+                ldistance = ABS(xHead->vy - lnode->vy);
+            }
             
             if (ldistance < distacneBest ) {
                 distacneBest = ldistance;
-                xHead->bestNode = xNext;
+                xHead->bestNode = lnode;
             }
-            if (ldistance == 0) {
-                NSLog(@"distance search = 0");
-            }
+            
+            xNext = lnode;
         }
         assert(xHead->vx != xNext->vx || xNextIndex+1 == nodeCount);
-        int xUpIndex = xNextIndex + 1;
-        if (xUpIndex+1 >= nodeCount) {
-            goto RESET;
-        }
         
         /////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////
@@ -180,10 +183,7 @@ struct PlaneNode * shortestDistanceOfTwoNodesInPlane(struct PlaneNode *planeNoad
         }
     }
     
-    
     return result;
-    
-    
 }
 
 
@@ -216,7 +216,6 @@ void planeNodesGenerate(int count){
            bestDistance(result,result->bestNode));
     printf("\n------------------------------------------------\n");
     
-
     
     free(node);
     
@@ -362,6 +361,9 @@ struct CubeNode * shortestDistanceOfTwoNodesInCube(struct CubeNode cubeNodes[], 
                 break;
             }
             xNextIndex++;
+            if (xNextIndex+1 >= nodeCount) {
+                goto RESET;
+            }
             struct CubeNode * xzeroNode = (struct CubeNode *) (sortedX[xNextIndex].node);
             float ldistance = bestDistance4Cube(xHead, xzeroNode);
             xNext = xzeroNode;
@@ -374,10 +376,8 @@ struct CubeNode * shortestDistanceOfTwoNodesInCube(struct CubeNode cubeNodes[], 
             }
         }
         assert(xHead->vx != xNext->vx || xHead->vz != xNext->vz || xNextIndex+1 == nodeCount);
-        int xUpIndex = xNextIndex + 1;
-        if (xUpIndex+1 >= nodeCount) {
-            goto RESET;
-        }
+
+        
         
         /////////////////////////////////////////////////////////////////////
         /////////////////////////////////////////////////////////////////////

@@ -41,9 +41,9 @@
 ////////////////////////////////////////////////////////////////////////
 
 void testShortestInPlane(){
-//    planeNodesGenerate(100);
-//    planeNodesGenerate(1000);
-//    planeNodesGenerate(2000);
+    planeNodesGenerate(100);
+    planeNodesGenerate(1000);
+    planeNodesGenerate(2000);
 }
 
 
