@@ -13,7 +13,7 @@
 Algorithms play the central role both in the science and practice of computing.
 Recognition of this fact has led to the appearance of a considerable number of textbooks on the subject.
 By and large, they follow one of two alternatives in presenting algorithms.
-    算法在计算科学与实践中都起到了核心作用。
+算法在计算科学与实践中都起到了核心作用。
     对该事实的认知，导致了针对该主题的大量书籍的出现。
     总体的来说，这些书籍以两种两种方式中的一种来表现算法。
 One classifies algorithms according to a problem type.
@@ -23,7 +23,6 @@ The drawback of this approach is that it emphasizes problem types at the expense
     根据问题类型对算法进行分类：这类书籍将会出现排序，搜索，图等的独立章节。
     这种分类方法的好处是：对相同的问题，可以对不同算法的效率进行直观的比较。
     其弊端是：它以算法设计技术的代价来强调问题类型。
-
 
 The second alternative organizes the presentation around algorithm design techniques.
 In this organization, algorithms from different areas of computing are grouped together if they have the same design approach.
@@ -44,20 +43,64 @@ After all, every science considers classification of its principal subject as a 
         毕竟，每一门科学都会考虑，将其非核心学科的主要科目的分类作为一个专业。
     第三，在我看来，作为通用问题解决策略可以应用于计算以外的问题，算法设计技术具有实用价值。
 
-Unfortunately, the traditional classification of algorithm design techniques has several serious shortcomings, from both theoretical and educational points of view. The most significant of these shortcomings is the failure to classify many important algorithms. This limitation has forced the authors of other textbooks to depart from the design technique organization and to include chapters dealing with specific problem types. Such a switch leads to a loss of course coherence and almost unavoidably creates a confusion in students’ minds.
-    很不幸，传统的算法设计技术的分类有几个严重的缺点。
+Unfortunately, the traditional classification of algorithm design techniques has several serious shortcomings, from both theoretical and educational points of view. The most significant of these shortcomings is the failure to classify many important algorithms.
+This limitation has forced the authors of other textbooks to depart from the design technique organization and to include chapters dealing with specific problem types.
+Such a switch leads to a loss of course coherence and almost unavoidably creates a confusion in students’ minds.
+    很不幸，传统的算法设计技术的分类有几个严重的缺点，无论是从理论还是从教学的观点来看。这些缺点中最重要的是分类很多重要算法的失败。
+    这个限制会迫使其他作者离开设计技术的组织，而引入解决特定问题类型的章节。这样的转向会导致课程内聚性的降低，且不可避免地引起学生思维上的迷惑。
 
 
 
+New taxonomy of algorithm design techniques
+My frustration with the shortcomings of the traditional classification of algorithm design techniques has motivated me to develop a new taxonomy of them [Lev99], which is the basis of this book. Here are the principal advantages of the new taxonomy:
+
+The new taxonomy is more comprehensive than the traditional one. It includes several strategies—brute-force, decrease-and-conquer, transform-and-con- quer, space and time trade-offs, and iterative improvement—that are rarely if ever recognized as important design paradigms.
+The new taxonomy covers naturally many classic algorithms (Euclid’s algo- rithm, heapsort, search trees, hashing, topological sorting, Gaussian elimi- nation, Horner’s rule—to name a few) that the traditional taxonomy cannot classify. As a result, the new taxonomy makes it possible to present the stan- dard body of classic algorithms in a unified and coherent fashion.
+It naturally accommodates the existence of important varieties of several design techniques. For example, it recognizes three variations of decrease- and-conquer and three variations of transform-and-conquer.
+It is better aligned with analytical methods for the efficiency analysis (see Appendix B).
+新的算法设计分类系统
 
 
 
+Design techniques as general problem solving strategies
+Most applications of the design techniques in the book are to classic problems of computer science. (The only innovation here is an inclusion of some material on numerical algorithms, which are covered within the same general framework.) But these design techniques can be considered general problem solving tools, whose applications are not limited to traditional computing and mathematical problems. Two factors make this point particularly important. First, more and more computing applications go beyond the traditional domain, and there are reasons to believe that this trend will strengthen in the future. Second, developing students’ problem solving skills has come to be recognized as a major goal of college education. Among all the courses in a computer science curriculum, a course on the design and analysis of algorithms is uniquely suitable for this task because it can offer a student specific strategies for solving problems.
+I am not proposing that a course on the design and analysis of algorithms should become a course on general problem solving. But I do believe that theunique opportunity provided by studying the design and analysis of algorithms should not be missed. Toward this goal, the book includes applications to puzzles and puzzle-like games. Although using puzzles in teaching algorithms is certainly not a new idea, the book tries to do this systematically by going well beyond a few standard examples.
+
+
+Textbook pedagogy
+My goal was to write a text that would not trivialize the subject but would still be readable by most students on their own. Here are some of the things done toward this objective.
+Sharing the opinion of George Forsythe expressed in the epigraph, I have sought to stress major ideas underlying the design and analysis of algorithms. In choosing specific algorithms to illustrate these ideas, I limited the number of covered algorithms to those that demonstrate an underlying design technique or an analysis method most clearly. Fortunately, most classic algorithms satisfy this criterion.
+In Chapter 2, which is devoted to efficiency analysis, the methods used for analyzing nonrecursive algorithms are separated from those typically used for analyzing recursive algorithms. The chapter also includes sections devoted to empirical analysis and algorithm visualization.
+The narrative is systematically interrupted by questions to the reader. Some of them are asked rhetorically, in anticipation of a concern or doubt, and are answered immediately. The goal of the others is to prevent the reader from drifting through the text without a satisfactory level of comprehension. Each chapter ends with a summary recapping the most important concepts and results discussed in the chapter.
+The book contains over 600 exercises. Some of them are drills; others make important points about the material covered in the body of the text or intro- duce algorithms not covered there at all. A few exercises take advantage of Internet resources. More difficult problems—there are not many of them— are marked by special symbols in the Instructor’s Manual. (Because marking problems as difficult may discourage some students from trying to tackle them, problems are not marked in the book itself.) Puzzles, games, and puzzle-like questions are marked in the exercises with a special icon.
+The book provides hints to all the exercises. Detailed solutions, except for programming projects, are provided in the Instructor’s Manual, available to qualified adopters through Pearson’s Instructor Resource Center. (Please contact your local Pearson sales representative or go to www.pearsonhighered .com/irc to access this material.) Slides in PowerPoint are available to all readers of this book via anonymous ftp at the CS Support site: http://cssupport .pearsoncmg.com/.
+
+
+Changes for the third edition
+There are a few changes in the third edition. The most important is the new order of the chapters on decrease-and-conquer and divide-and-conquer. There are several advantages in introducing decrease-and-conquer before divide-and-conquer:
+Decrease-and-conquer is a simpler strategy than divide-and-conquer. Decrease-and-conquer is applicable to more problems than divide-and-con- quer.
+The new order makes it possible to discuss insertion sort before mergesort and quicksort.
+The idea of array partitioning is now introduced in conjunction with the selection problem. I took advantage of an opportunity to do this via the one- directional scan employed by Lomuto’s algorithm, leaving the two-directional scan used by Hoare’s partitioning to a later discussion in conjunction with quicksort.
+Binary search is now considered in the section devoted to decrease-by-a- constant-factor algorithms, where it belongs.
+The second important change is restructuring of Chapter 8 on dynamic pro- gramming. Specifically:
+The introductory section is completely new. It contains three basic examples that provide a much better introduction to this important technique than computing a binomial coefficient, the example used in the first two editions. All the exercises for Section 8.1 are new as well; they include well-known applications not available in the previous editions.
+I also changed the order of the other sections in this chapter to get a smoother progression from the simpler applications to the more advanced ones.
+The other changes include the following. More applications of the algorithms discussed are included. The section on the graph-traversal algorithms is moved from the decrease-and-conquer chapter to the brute-force and exhaustive-search chapter, where it fits better, in my opinion. The Gray code algorithm is added to the section dealing with algorithms for generating combinatorial objects. The divide- and-conquer algorithm for the closest-pair problem is discussed in more detail. Updates include the section on algorithm visualization, approximation algorithms for the traveling salesman problem, and, of course, the bibliography.
+I also added about 70 new problems to the exercises. Some of them are algo- rithmic puzzles and questions asked during job interviews.
 
 
 
+Prerequisites
+The book assumes that a reader has gone through an introductory programming course and a standard course on discrete structures. With such a background, he or she should be able to handle the book’s material without undue difficulty.
+Still, fundamental data structures, necessary summation formulas, and recurrence relations are reviewed in Section 1.4, Appendix A, and Appendix B, respectively. Calculus is used in only three sections (Section 2.2, 11.4, and 12.4), and to a very limited degree; if students lack calculus as an assured part of their background, the relevant portions of these three sections can be omitted without hindering their understanding of the rest of the material.
 
 
 
+Use in the curriculum
+The book can serve as a textbook for a basic course on design and analysis of algorithms organized around algorithm design techniques. It might contain slightly more material than can be covered in a typical one-semester course. By and large, portions of Chapters 3 through 12 can be skipped without the danger of making later parts of the book incomprehensible to the reader. Any portion of the book can be assigned for self-study. In particular, Sections 2.6 and 2.7 on empirical analysis and algorithm visualization, respectively, can be assigned in conjunction with projects.
+Here is a possible plan for a one-semester course; it assumes a 40-class meeting format.
+
+（章节图表缺失）
 
 
 
